@@ -1,0 +1,264 @@
+{
+    "techStacks": [
+      {
+        "name": "JavaScript",
+        "icon": "FileJson",
+        "category": "Frontend",
+        "proficiency": 90,
+        "color": "yellow-400",
+        "description": "Core language for web development with extensive experience in ES6+ features, async programming, and DOM manipulation.",
+        "years": 5,
+        "projects": 15
+      },
+      {
+        "name": "TypeScript",
+        "icon": "FileType",
+        "category": "Frontend",
+        "proficiency": 85,
+        "color": "blue-500",
+        "description": "Strongly typed programming language that builds on JavaScript, providing better tooling and error prevention.",
+        "years": 3,
+        "projects": 8
+      },
+      {
+        "name": "React.js",
+        "icon": "Boxes",
+        "category": "Frontend",
+        "proficiency": 92,
+        "color": "blue-400",
+        "description": "Library for building user interfaces with components, hooks, and virtual DOM for efficient rendering.",
+        "years": 4,
+        "projects": 12
+      },
+      {
+        "name": "Next.js",
+        "icon": "Package",
+        "category": "Frontend",
+        "proficiency": 88,
+        "color": "gray-700",
+        "description": "React framework with hybrid static & server rendering, route pre-fetching, and optimized performance.",
+        "years": 2,
+        "projects": 6
+      },
+      {
+        "name": "HTML",
+        "icon": "Code",
+        "category": "Frontend",
+        "proficiency": 95,
+        "color": "orange-500",
+        "description": "Fundamental markup language for web pages with expertise in semantic elements and accessibility practices.",
+        "years": 6,
+        "projects": 20
+      },
+      {
+        "name": "CSS",
+        "icon": "PaintBucket",
+        "category": "Frontend",
+        "proficiency": 90,
+        "color": "blue-600",
+        "description": "Styling language with proficiency in layouts, animations, and responsive design principles.",
+        "years": 6,
+        "projects": 18
+      },
+      {
+        "name": "Tailwind CSS",
+        "icon": "Layers",
+        "category": "Frontend",
+        "proficiency": 94,
+        "color": "teal-500",
+        "description": "Utility-first CSS framework for rapid UI development with customizable design systems.",
+        "years": 3,
+        "projects": 10
+      },
+      {
+        "name": "Flowbite",
+        "icon": "LayoutGrid",
+        "category": "Frontend",
+        "proficiency": 85,
+        "color": "blue-600",
+        "description": "UI component library built on top of Tailwind CSS with pre-built accessible components.",
+        "years": 1,
+        "projects": 4
+      },
+      {
+        "name": "Radix UI",
+        "icon": "Box",
+        "category": "Frontend",
+        "proficiency": 82,
+        "color": "violet-600",
+        "description": "Headless UI component library focused on accessibility and customization.",
+        "years": 1,
+        "projects": 3
+      },
+      {
+        "name": "ShadCN UI",
+        "icon": "LayoutGrid",
+        "category": "Frontend",
+        "proficiency": 87,
+        "color": "gray-800",
+        "description": "Component library built on Radix UI and Tailwind with reusable components.",
+        "years": 1,
+        "projects": 5
+      },
+      {
+        "name": "Chart.js",
+        "icon": "BarChart3",
+        "category": "Frontend",
+        "proficiency": 80,
+        "color": "pink-500",
+        "description": "JavaScript library for data visualization with responsive and interactive charts.",
+        "years": 2,
+        "projects": 6
+      },
+      {
+        "name": "Echart",
+        "icon": "LineChart",
+        "category": "Frontend",
+        "proficiency": 75,
+        "color": "purple-500",
+        "description": "Powerful charting library with features for interactive data visualization and dashboards.",
+        "years": 1,
+        "projects": 3
+      },
+      {
+        "name": "PHP",
+        "icon": "FileCode",
+        "category": "Backend",
+        "proficiency": 88,
+        "color": "indigo-600",
+        "description": "Server-side scripting language used for web development with strong database integration.",
+        "years": 5,
+        "projects": 10
+      },
+      {
+        "name": "Laravel",
+        "icon": "Layers",
+        "category": "Backend",
+        "proficiency": 90,
+        "color": "red-500",
+        "description": "PHP framework with elegant syntax for web applications with MVC pattern support.",
+        "years": 4,
+        "projects": 8
+      },
+      {
+        "name": "Filament",
+        "icon": "Cpu",
+        "category": "Backend",
+        "proficiency": 85,
+        "color": "blue-700",
+        "description": "Admin panel builder for Laravel with customizable CRUD interfaces and dashboards.",
+        "years": 2,
+        "projects": 5
+      },
+      {
+        "name": "Node.js",
+        "icon": "Server",
+        "category": "Backend",
+        "proficiency": 86,
+        "color": "green-600",
+        "description": "JavaScript runtime for server-side applications with event-driven architecture.",
+        "years": 3,
+        "projects": 7
+      },
+      {
+        "name": "Nest.js",
+        "icon": "Package",
+        "category": "Backend",
+        "proficiency": 80,
+        "color": "red-600",
+        "description": "Progressive Node.js framework for building scalable server-side applications.",
+        "years": 1,
+        "projects": 3
+      },
+      {
+        "name": "MySQL",
+        "icon": "Database",
+        "category": "Backend",
+        "proficiency": 88,
+        "color": "blue-500",
+        "description": "Relational database management system with expertise in optimization and complex queries.",
+        "years": 4,
+        "projects": 9
+      },
+      {
+        "name": "Docker",
+        "icon": "Box",
+        "category": "DevOps",
+        "proficiency": 85,
+        "color": "blue-500",
+        "description": "Platform for developing and deploying applications in containers for consistent environments.",
+        "years": 2,
+        "projects": 6
+      },
+      {
+        "name": "Ubuntu",
+        "icon": "Terminal",
+        "category": "DevOps",
+        "proficiency": 82,
+        "color": "orange-600",
+        "description": "Linux distribution used for server deployments and development environments.",
+        "years": 3,
+        "projects": 8
+      },
+      {
+        "name": "Nginx",
+        "icon": "CloudCog",
+        "category": "DevOps",
+        "proficiency": 80,
+        "color": "green-500",
+        "description": "Web server used for serving content, reverse proxying, and load balancing.",
+        "years": 2,
+        "projects": 5
+      },
+      {
+        "name": "Apache",
+        "icon": "WifiIcon",
+        "category": "DevOps",
+        "proficiency": 78,
+        "color": "red-500",
+        "description": "Web server software for hosting websites and serving applications.",
+        "years": 3,
+        "projects": 6
+      },
+      {
+        "name": "GitHub",
+        "icon": "FolderGit",
+        "category": "DevOps",
+        "proficiency": 92,
+        "color": "gray-800",
+        "description": "Platform for version control, collaboration, and CI/CD integration.",
+        "years": 4,
+        "projects": 15
+      },
+      {
+        "name": "GitLab",
+        "icon": "GitBranch",
+        "category": "DevOps",
+        "proficiency": 88,
+        "color": "orange-600",
+        "description": "DevOps platform with Git repository management, CI/CD, and monitoring.",
+        "years": 3,
+        "projects": 7
+      },
+      {
+        "name": "OpenCV",
+        "icon": "Gamepad2",
+        "category": "Other",
+        "proficiency": 70,
+        "color": "green-600",
+        "description": "Computer vision library for image and video processing applications.",
+        "years": 1,
+        "projects": 2
+      },
+      {
+        "name": "Swiper",
+        "icon": "Gamepad2",
+        "category": "Frontend",
+        "proficiency": 85,
+        "color": "green-600",
+        "description": "Computer vision library for image and video processing applications.",
+        "years": 1,
+        "projects": 2
+      }
+    ]
+  }

@@ -1,0 +1,8 @@
+{
+  "item": [
+    { "icon": "📱", "number": "10+", "text": "Project Complete" },
+    { "icon": "🚀", "number": "3+", "text": "Project Ongoing" },
+    { "icon": "🏆", "number": "1+", "text": "Sertifikasi" },
+    { "icon": "⏳", "number": "2.5+", "text": "Years Of Experience" }
+  ]
+}
