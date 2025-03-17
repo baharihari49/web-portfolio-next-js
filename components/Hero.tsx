@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { ArrowRight, ArrowDown, Code, Zap, ExternalLink, Mail } from 'lucide-react';
 import { FiGithub } from "react-icons/fi";
 import { LiaLinkedin } from "react-icons/lia";
+import { FaInstagram } from "react-icons/fa";
 
 interface HeroProps {
   scrollToSection: (sectionId: string) => void;
@@ -82,22 +83,28 @@ export const Hero: React.FC<HeroProps> = ({ scrollToSection }) => {
               <div className="flex items-center space-x-4 mt-10">
                 <span className="text-blue-100 text-sm">Connect with me:</span>
                 <a 
-                  href="#" 
+                  href="https://github.com/baharihari49" 
                   className="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition-colors"
                 >
-                  <FiGithub className="w-5 h-5 text-black" />
+                  <FiGithub className="w-5 h-5 text-blue-600" />
                 </a>
                 <a 
-                  href="#" 
+                  href="https://www.linkedin.com/in/bahari49/" 
                   className="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition-colors"
                 >
-                  <LiaLinkedin className="w-6 h-6 text-black" />
+                  <LiaLinkedin className="w-6 h-6 text-blue-600" />
+                </a>
+                <a 
+                  href="https://www.instagram.com/bahar.iii1/" 
+                  className="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition-colors"
+                >
+                  <FaInstagram className="w-6 h-6 text-blue-600" />
                 </a>
                 <a 
                   href="mailto:hello@baharihari.com" 
                   className="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition-colors"
                 >
-                  <Mail className="w-5 h-5 text-black" />
+                  <Mail className="w-5 h-5 text-blue-600" />
                 </a>
               </div>
             </div>

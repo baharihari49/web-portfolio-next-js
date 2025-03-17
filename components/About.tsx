@@ -134,7 +134,7 @@ export const About = () => {
               
               <div className="flex space-x-4">
                 <a
-                  href="https://drive.google.com/drive/folders/1uVXfBm5S73BAMFCWwKxPHfF-zUBS3sqP?usp=drive_link"
+                  href="https://docs.google.com/document/d/11Qs9yzux057cUtwnfWqS4I2sSxqv8b_vKMQwR1nzMEs/edit?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-3 bg-indigo-600 text-white rounded-full font-medium hover:bg-indigo-700 transition-colors duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1 inline-flex items-center text-sm md:text-base"

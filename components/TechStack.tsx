@@ -1,11 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { 
-  Code, Server, Database, Terminal, LayoutGrid, 
-  Boxes, FileCode, Cpu, Box, GitBranch, LineChart, 
-  BarChart3, Monitor, FileJson, FileType, PaintBucket, 
-  FolderGit, Gamepad2, CloudCog, WifiIcon, Heart, Star, BookMarked,
+  Server, LayoutGrid, 
+  Box, Monitor, FolderGit, CloudCog, Heart, Star, BookMarked,
   Search, ArrowUpRight, Sparkles, Activity, ZoomIn, X,
-  ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, ListFilter, Layers, Package
+  ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, ListFilter, Layers
 } from 'lucide-react';
 import { RiNextjsLine, RiTailwindCssFill  } from "react-icons/ri";
 import { FaReact, FaPhp, FaLaravel, FaNodeJs, FaDocker, FaUbuntu, FaGithub } from 'react-icons/fa';

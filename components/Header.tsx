@@ -107,8 +107,8 @@ export const Header: React.FC<HeaderProps> = ({ activeSection, scrollToSection }
                 <Image 
                   src="https://res.cloudinary.com/du0tz73ma/image/upload/v1742113500/Group_2_unphpg.png" 
                   alt="Bahari Logo" 
-                  width={40}
-                  height={40}
+                  width={100}
+                  height={100}
                   className="h-10 w-auto"
                 />
               </div>
