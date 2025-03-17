@@ -7,6 +7,13 @@ import {
   Search, ArrowUpRight, Sparkles, Activity, ZoomIn, X,
   ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, ListFilter, Layers, Package
 } from 'lucide-react';
+import { RiNextjsLine, RiTailwindCssFill  } from "react-icons/ri";
+import { FaReact, FaPhp, FaLaravel, FaNodeJs, FaDocker, FaUbuntu, FaGithub } from 'react-icons/fa';
+import { IoLogoJavascript, IoPieChartOutline  } from "react-icons/io5";
+import { SiTypescript, SiShadcnui, SiChartdotjs, SiFilament ,SiNestjs, SiMysql, SiNginx, SiApache, SiOpencv, SiSwiper} from "react-icons/si";
+import { LiaHtml5,LiaCss3Alt  } from "react-icons/lia";
+import { TbBrandRadixUi } from "react-icons/tb";
+import { FiGitlab } from "react-icons/fi";
 
 // Import tech stack data from JSON
 import techStackData from "@/app/data/techstack.json";
@@ -46,27 +53,31 @@ const colorMap = {
 
 // Create icon mapping object to convert string icon names to React components
 const iconMap: Record<string, React.ElementType> = {
-  FileJson: FileJson,
-  FileType: FileType,
-  Boxes: Boxes,
-  Package: Package,
-  Code: Code,
-  PaintBucket: PaintBucket,
-  Layers: Layers,
-  LayoutGrid: LayoutGrid,
-  Box: Box,
-  BarChart3: BarChart3,
-  LineChart: LineChart,
-  FileCode: FileCode,
-  Cpu: Cpu,
-  Server: Server,
-  Database: Database,
-  Terminal: Terminal,
-  CloudCog: CloudCog,
-  WifiIcon: WifiIcon,
-  FolderGit: FolderGit,
-  GitBranch: GitBranch,
-  Gamepad2: Gamepad2
+  IoLogoJavascript: IoLogoJavascript,
+  SiTypescript: SiTypescript,
+  FaReact: FaReact,
+  LiaHtml5: LiaHtml5,
+  LiaCss3Alt: LiaCss3Alt,
+  RiTailwindCssFill: RiTailwindCssFill,
+  SiShadcnui: SiShadcnui,
+  TbBrandRadixUi: TbBrandRadixUi,
+  SiChartdotjs: SiChartdotjs,
+  IoPieChartOutline: IoPieChartOutline,
+  FaPhp: FaPhp,
+  FaLaravel: FaLaravel,
+  SiFilament: SiFilament,
+  FaNodeJs: FaNodeJs,
+  SiNestjs: SiNestjs,
+  SiMysql: SiMysql,
+  FaDocker: FaDocker,
+  FaUbuntu: FaUbuntu,
+  SiNginx: SiNginx,
+  SiApache: SiApache,
+  FaGithub: FaGithub,
+  FiGitlab: FiGitlab,
+  SiOpencv: SiOpencv,
+  RiNextjsLine: RiNextjsLine,
+  SiSwiper: SiSwiper
 };
 
 export const TechStack = () => {

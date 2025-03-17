@@ -2,7 +2,7 @@
     "techStacks": [
       {
         "name": "JavaScript",
-        "icon": "FileJson",
+        "icon": "IoLogoJavascript",
         "category": "Frontend",
         "proficiency": 90,
         "color": "yellow-400",
@@ -12,7 +12,7 @@
       },
       {
         "name": "TypeScript",
-        "icon": "FileType",
+        "icon": "SiTypescript",
         "category": "Frontend",
         "proficiency": 85,
         "color": "blue-500",
@@ -22,7 +22,7 @@
       },
       {
         "name": "React.js",
-        "icon": "Boxes",
+        "icon": "FaReact",
         "category": "Frontend",
         "proficiency": 92,
         "color": "blue-400",
@@ -32,7 +32,7 @@
       },
       {
         "name": "Next.js",
-        "icon": "Package",
+        "icon": "RiNextjsLine",
         "category": "Frontend",
         "proficiency": 88,
         "color": "gray-700",
@@ -42,7 +42,7 @@
       },
       {
         "name": "HTML",
-        "icon": "Code",
+        "icon": "LiaHtml5",
         "category": "Frontend",
         "proficiency": 95,
         "color": "orange-500",
@@ -52,7 +52,7 @@
       },
       {
         "name": "CSS",
-        "icon": "PaintBucket",
+        "icon": "LiaCss3Alt",
         "category": "Frontend",
         "proficiency": 90,
         "color": "blue-600",
@@ -62,7 +62,7 @@
       },
       {
         "name": "Tailwind CSS",
-        "icon": "Layers",
+        "icon": "RiTailwindCssFill",
         "category": "Frontend",
         "proficiency": 94,
         "color": "teal-500",
@@ -82,7 +82,7 @@
       },
       {
         "name": "Radix UI",
-        "icon": "Box",
+        "icon": "TbBrandRadixUi",
         "category": "Frontend",
         "proficiency": 82,
         "color": "violet-600",
@@ -92,7 +92,7 @@
       },
       {
         "name": "ShadCN UI",
-        "icon": "LayoutGrid",
+        "icon": "SiShadcnui",
         "category": "Frontend",
         "proficiency": 87,
         "color": "gray-800",
@@ -102,7 +102,7 @@
       },
       {
         "name": "Chart.js",
-        "icon": "BarChart3",
+        "icon": "SiChartdotjs",
         "category": "Frontend",
         "proficiency": 80,
         "color": "pink-500",
@@ -112,7 +112,7 @@
       },
       {
         "name": "Echart",
-        "icon": "LineChart",
+        "icon": "IoPieChartOutline",
         "category": "Frontend",
         "proficiency": 75,
         "color": "purple-500",
@@ -122,7 +122,7 @@
       },
       {
         "name": "PHP",
-        "icon": "FileCode",
+        "icon": "FaPhp",
         "category": "Backend",
         "proficiency": 88,
         "color": "indigo-600",
@@ -132,7 +132,7 @@
       },
       {
         "name": "Laravel",
-        "icon": "Layers",
+        "icon": "FaLaravel",
         "category": "Backend",
         "proficiency": 90,
         "color": "red-500",
@@ -142,7 +142,7 @@
       },
       {
         "name": "Filament",
-        "icon": "Cpu",
+        "icon": "SiFilament",
         "category": "Backend",
         "proficiency": 85,
         "color": "blue-700",
@@ -152,7 +152,7 @@
       },
       {
         "name": "Node.js",
-        "icon": "Server",
+        "icon": "FaNodeJs",
         "category": "Backend",
         "proficiency": 86,
         "color": "green-600",
@@ -162,7 +162,7 @@
       },
       {
         "name": "Nest.js",
-        "icon": "Package",
+        "icon": "SiNestjs",
         "category": "Backend",
         "proficiency": 80,
         "color": "red-600",
@@ -172,7 +172,7 @@
       },
       {
         "name": "MySQL",
-        "icon": "Database",
+        "icon": "SiMysql",
         "category": "Backend",
         "proficiency": 88,
         "color": "blue-500",
@@ -182,7 +182,7 @@
       },
       {
         "name": "Docker",
-        "icon": "Box",
+        "icon": "FaDocker",
         "category": "DevOps",
         "proficiency": 85,
         "color": "blue-500",
@@ -192,7 +192,7 @@
       },
       {
         "name": "Ubuntu",
-        "icon": "Terminal",
+        "icon": "FaUbuntu",
         "category": "DevOps",
         "proficiency": 82,
         "color": "orange-600",
@@ -202,7 +202,7 @@
       },
       {
         "name": "Nginx",
-        "icon": "CloudCog",
+        "icon": "SiNginx",
         "category": "DevOps",
         "proficiency": 80,
         "color": "green-500",
@@ -212,7 +212,7 @@
       },
       {
         "name": "Apache",
-        "icon": "WifiIcon",
+        "icon": "SiApache",
         "category": "DevOps",
         "proficiency": 78,
         "color": "red-500",
@@ -222,7 +222,7 @@
       },
       {
         "name": "GitHub",
-        "icon": "FolderGit",
+        "icon": "FaGithub",
         "category": "DevOps",
         "proficiency": 92,
         "color": "gray-800",
@@ -232,7 +232,7 @@
       },
       {
         "name": "GitLab",
-        "icon": "GitBranch",
+        "icon": "FiGitlab",
         "category": "DevOps",
         "proficiency": 88,
         "color": "orange-600",
@@ -242,7 +242,7 @@
       },
       {
         "name": "OpenCV",
-        "icon": "Gamepad2",
+        "icon": "SiOpencv",
         "category": "Other",
         "proficiency": 70,
         "color": "green-600",
@@ -252,7 +252,7 @@
       },
       {
         "name": "Swiper",
-        "icon": "Gamepad2",
+        "icon": "SiSwiper",
         "category": "Frontend",
         "proficiency": 85,
         "color": "green-600",

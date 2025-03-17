@@ -2,7 +2,6 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Roboto } from "next/font/google";
-import Head from "next/head";
 
 // Font config
 const geistSans = Geist({
@@ -21,7 +20,7 @@ const roboto = Roboto({
   subsets: ["latin"],
 });
 
-// Metadata config
+// ✅ Metadata with favicon
 export const metadata: Metadata = {
   title: "Bahari - Frontend Developer & Full Stack Developer",
   description:
@@ -37,6 +36,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Bahari" }],
   viewport: "width=device-width, initial-scale=1, shrink-to-fit=no",
+  icons: {
+    icon: "https://res.cloudinary.com/du0tz73ma/image/upload/v1733663814/Group_1_1_z6fjj3.png", // ✅ favicon diatur di sini
+  },
   openGraph: {
     title: "Bahari - Frontend Developer & Full Stack Developer",
     description:
@@ -70,14 +72,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Head>
-        {/* Favicon */}
-        <link
-          rel="shortcut icon"
-          href="https://res.cloudinary.com/du0tz73ma/image/upload/v1733663814/Group_1_1_z6fjj3.png"
-          type="image/png"
-        />
-      </Head>
       <body
         style={{ fontFamily: "Roboto" }}
         className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} antialiased`}

@@ -79,6 +79,7 @@ export const Header: React.FC<HeaderProps> = ({ activeSection, scrollToSection }
     { name: 'About', href: '#about', icon: <User className="w-4 h-4" /> },
     { name: 'Experience', href: '#experience', icon: <Briefcase className="w-4 h-4" /> },
     { name: 'Portfolio', href: '#portfolio', icon: <ImageIcon className="w-4 h-4" /> },
+    { name: 'Techt Stack', href: '#tech-stack', icon: <ImageIcon className="w-4 h-4" /> },
     { name: 'Testimonials', href: '#testimonials', icon: <MessageSquare className="w-4 h-4" /> },
     { name: 'Contact', href: '#contact', icon: <Phone className="w-4 h-4" /> },
   ];

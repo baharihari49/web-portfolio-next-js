@@ -69,7 +69,7 @@ export const About = () => {
                 height={1000}
                 src="https://res.cloudinary.com/du0tz73ma/image/upload/c_fill,w_500,h_712/v1733249983/IMG-20240331-WA0008_xebcsy.jpg"
                 alt="Bahari"
-                className="relative z-10 rounded-3xl shadow-xl max-w-full h-auto object-cover w-full md:w-[90%] transform transition-transform duration-500 hover:scale-[1.02]"
+                className="relative z-10 rounded-3xl shadow-xl max-w-full h-auto object-cover w-80 md:w-[90%] transform transition-transform duration-500 hover:scale-[1.02]"
               />
               
               {/* Experience badge */}
@@ -137,14 +137,14 @@ export const About = () => {
                   href="https://drive.google.com/drive/folders/1uVXfBm5S73BAMFCWwKxPHfF-zUBS3sqP?usp=drive_link"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 bg-indigo-600 text-white rounded-full font-medium hover:bg-indigo-700 transition-colors duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1 inline-flex items-center"
+                  className="px-6 py-3 bg-indigo-600 text-white rounded-full font-medium hover:bg-indigo-700 transition-colors duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1 inline-flex items-center text-sm md:text-base"
                 >
                   Download CV <ArrowRight size={18} className="ml-2" />
                 </a>
                 
                 <a
                   href="#portfolio"
-                  className="px-6 py-3 border-2 border-indigo-600 text-indigo-600 rounded-full font-medium hover:bg-indigo-50 transition-colors duration-300 inline-flex items-center"
+                  className="px-6 py-3 border-2 border-indigo-600 text-indigo-600 rounded-full font-medium hover:bg-indigo-50 transition-colors duration-300 inline-flex items-center text-sm md:text-base"
                 >
                   My Projects <ExternalLink size={18} className="ml-2" />
                 </a>

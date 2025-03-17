@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { ArrowRight, ArrowDown, Code, Zap, ExternalLink, Mail, Github, Linkedin } from 'lucide-react';
+import { ArrowRight, ArrowDown, Code, Zap, ExternalLink, Mail } from 'lucide-react';
+import { FiGithub } from "react-icons/fi";
+import { LiaLinkedin } from "react-icons/lia";
 
 interface HeroProps {
   scrollToSection: (sectionId: string) => void;
@@ -83,13 +85,13 @@ export const Hero: React.FC<HeroProps> = ({ scrollToSection }) => {
                   href="#" 
                   className="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition-colors"
                 >
-                  <Github className="w-5 h-5 text-black" />
+                  <FiGithub className="w-5 h-5 text-black" />
                 </a>
                 <a 
                   href="#" 
                   className="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition-colors"
                 >
-                  <Linkedin className="w-5 h-5 text-black" />
+                  <LiaLinkedin className="w-6 h-6 text-black" />
                 </a>
                 <a 
                   href="mailto:hello@baharihari.com" 
@@ -114,7 +116,7 @@ export const Hero: React.FC<HeroProps> = ({ scrollToSection }) => {
                   width={2475}
                   height={3420}
                   priority
-                  className="max-w-full h-auto object-cover"
+                  className="max-w-full w-80 md:w-full h-auto object-cover"
                 />
               </div>
               
