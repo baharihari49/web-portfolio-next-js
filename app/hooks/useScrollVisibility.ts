@@ -1,15 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 
-/**
- * Custom hook to handle scroll-based visibility of elements with performance optimizations
- * @returns Visible item indices and function to check visibility
- */
 export const useScrollVisibility = () => {
   const [visibleItems, setVisibleItems] = useState<number[]>([]);
   const scrollHandlerRef = useRef<boolean>(false);
   
-  // Check visibility of elements based on scroll position
-  const checkVisibility = () => {
+  // Menggunakan useCallback untuk memoize fungsi checkVisibility
+  const checkVisibility = useCallback(() => {
     const elements = document.querySelectorAll('.portfolio-item');
     const newVisibleItems: number[] = [];
     
@@ -23,7 +19,7 @@ export const useScrollVisibility = () => {
     if (newVisibleItems.length > visibleItems.length) {
       setVisibleItems(prev => [...new Set([...prev, ...newVisibleItems])]);
     }
-  };
+  }, [visibleItems.length]);
   
   // Set up scroll listener with performance optimization
   useEffect(() => {
@@ -46,7 +42,7 @@ export const useScrollVisibility = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [visibleItems.length]);
+  }, [checkVisibility]); // Sekarang checkVisibility adalah dependensi
   
   return { visibleItems, checkVisibility };
 };

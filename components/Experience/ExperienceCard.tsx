@@ -17,10 +17,10 @@ interface ExperienceCardProps {
 const ExperienceCard: React.FC<ExperienceCardProps> = ({ 
   experience, 
   index,
-  isVisible,
+//   isVisible,
   isExpanded,
   toggleExpand,
-  isLeftAligned = true,
+//   isLeftAligned = true,
   isCompact = false
 }) => {
   return (

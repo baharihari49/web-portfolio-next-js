@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Heart } from 'lucide-react';
+// import { Heart } from 'lucide-react';
 import { ExperienceTabType } from '@/app/types/experience';
 import { filterExperiences } from '@/app/utils/experienceUtils';
 import useExperienceAnimation from './hooks/useExperienceAnimation';
