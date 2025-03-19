@@ -4,14 +4,15 @@ import { ChevronDown } from 'lucide-react';
 import { Header } from '../components/Header';
 import { Hero } from '../components/Hero';
 import { About } from '../components/About';
-import { Experience } from '../components/Experience';
-import { Portfolio } from '../components/Portpolio';
+// import { Experience } from '../components/Experience';
+import Experience from '../components/Experience';
+import Portfolio from '@/components/Portfolio';
 import { CTA } from '../components/CTA';
 import { Stats } from '../components/Stats';
 import { Testimonials } from '../components/Testimonials';
 import { Contact } from '../components/Contact/Contact';
 import { Footer } from '../components/Footer';
-import { TechStack } from '@/components/TechStack';
+import TechStack from '../components/TechStack';
 import { useEmailJsInit } from '../lib/emailJs';
 
 interface PortoProps {
