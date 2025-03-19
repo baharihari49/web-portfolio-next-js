@@ -9,9 +9,10 @@ import { Portfolio } from '../components/Portpolio';
 import { CTA } from '../components/CTA';
 import { Stats } from '../components/Stats';
 import { Testimonials } from '../components/Testimonials';
-import { Contact } from '../components/Contact';
+import { Contact } from '../components/Contact/Contact';
 import { Footer } from '../components/Footer';
 import { TechStack } from '@/components/TechStack';
+import { useEmailJsInit } from '../lib/emailJs';
 
 interface PortoProps {
   scrollToSection: (sectionId: string) => void;
@@ -96,6 +97,8 @@ const BahariPortfolio = () => {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  useEmailJsInit();
 
   return (
     <div className="text-gray-900 antialiased bg-gray-50">
