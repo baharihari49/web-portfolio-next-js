@@ -34,12 +34,15 @@ const Portfolio: React.FC = () => {
 
   // Filter and search items
   const filteredItems = filterPortfolioItems(portfolioItems, filter, searchQuery);
+  
+  // Sort items in reverse order (from bottom to top)
+  const reversedItems = [...filteredItems].reverse();
     
   // Pagination calculations
-  const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
+  const totalPages = Math.ceil(reversedItems.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = filteredItems.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = reversedItems.slice(indexOfFirstItem, indexOfLastItem);
   
   // Page change handler
   const paginate = (pageNumber: number) => {
@@ -88,7 +91,7 @@ const Portfolio: React.FC = () => {
         />
         
         {/* No results message */}
-        {filteredItems.length === 0 ? (
+        {reversedItems.length === 0 ? (
           <NoResults resetFilters={resetFilters} />
         ) : (
           <>

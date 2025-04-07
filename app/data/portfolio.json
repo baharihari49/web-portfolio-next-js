@@ -427,6 +427,98 @@
       },
       "nextProject": "DUHANI Landing page",
       "nextProjectSlug": "duhani-landing-page"
+    },
+    {
+      "title": "Nextgen",
+      "slug": "nextgen",
+      "link": "https://nextgen.baharihari.com/",
+      "category": "Web",
+      "image": "https://res.cloudinary.com/du0tz73ma/image/upload/v1743986179/Laptop_mockup_on_table_with_plants_bshwaq.png",
+      "description": "Nextgen is a dynamic software house specializing in comprehensive digital services for businesses across various industries. I designed and developed their corporate web platform that effectively showcases their diverse service offerings while providing an intuitive user experience for potential clients. The website serves as both a powerful marketing tool and a client engagement portal, highlighting Nextgen's expertise in software development, web solutions, mobile applications, cloud services, and digital transformation consulting. Built with a modern technology stack including Next.js for superior performance and React.js for dynamic interactive components, the site delivers a seamless experience with impressive loading speeds. Tailwind CSS provides the responsive design framework ensuring perfect display across all devices, while GSAP powers smooth animations and transitions that enhance the user experience. The backend infrastructure is deployed on carefully optimized Nginx servers running on Ubuntu, configured for maximum reliability and security. The architecture features an interactive service showcase, client portfolio gallery, streamlined contact system, and a secure client portal for project management and communication. This project required balancing professional presentation with technical functionality to effectively communicate Nextgen's capabilities and establish them as a trusted partner in the competitive digital services market.",
+      "technologies": [
+        "Next.js",
+        "React.js",
+        "Tailwind CSS",
+        "GSAP",
+        "Nginx",
+        "Ubuntu"
+      ],
+      "year": "2025",
+      "role": "Frontend Developer",
+      "duration": "2 weeks",
+      "highlight": "Developed a high-conversion corporate platform showcasing Nextgen's digital services with 99.9% uptime",
+      "keyFeatures": [
+        "Interactive service showcase with detailed capability explanations",
+        "Dynamic portfolio gallery with filtering by industry and technology",
+        "Client testimonial system with video integration capabilities",
+        "Secure client portal for project management and communication",
+        "Team profile section highlighting expertise and specializations",
+        "Blog platform for sharing industry insights and company news",
+        "Responsive design ensuring perfect functionality on all devices"
+      ],
+      "gallery": [
+        "https://res.cloudinary.com/du0tz73ma/image/upload/v1743986024/iPhone_15_Pro_Max_Mockup_Front_View_pofi71.png",
+        "https://res.cloudinary.com/du0tz73ma/image/upload/v1743986186/Macbook_Mockup_Front_View_UV_jw2hqk.png",
+        "https://res.cloudinary.com/du0tz73ma/image/upload/v1743986014/Laptop_Website_Mockup_Template_gsazob.png"
+      ],
+      "challenges": [
+        "Creating a compelling digital presence that effectively communicates diverse service offerings",
+        "Designing an intuitive interface that appeals to clients from various industries",
+        "Implementing a secure client portal for project management and communication",
+        "Balancing visual appeal with performance optimization for a fast, engaging experience",
+        "Developing a content management system for easy updates of portfolio and blog content"
+      ],
+      "solutions": [
+        "Developed a modular component system for flexible service presentation and updates",
+        "Created industry-specific landing pages with targeted messaging and case studies",
+        "Implemented comprehensive security measures for the client portal and contact systems",
+        "Optimized asset loading and implemented lazy loading techniques for optimal performance",
+        "Built a custom CMS with intuitive interfaces for content management by non-technical staff"
+      ],
+      "testimonial": {
+        "text": "The Nextgen platform perfectly represents our brand and capabilities as a software house. The interactive service showcase has significantly increased client inquiries, and the secure portal has streamlined our project communication. The technical implementation is exceptional with excellent performance metrics.",
+        "author": "Arif Rahman",
+        "position": "CEO at Nextgen"
+      },
+      "nextProject": "DUHANI Landing page",
+      "nextProjectSlug": "duhani-landing-page",
+      "services": [
+        {
+          "name": "Custom Software Development",
+          "description": "End-to-end development of tailored software solutions designed to address specific business challenges and operational requirements"
+        },
+        {
+          "name": "Web Application Development",
+          "description": "Creation of responsive, high-performance web applications with intuitive interfaces and robust functionality"
+        },
+        {
+          "name": "Mobile App Development",
+          "description": "Development of native and cross-platform mobile applications for iOS and Android devices with seamless user experiences"
+        },
+        {
+          "name": "UI/UX Design",
+          "description": "User-centered design services creating intuitive, engaging, and accessible digital experiences"
+        },
+        {
+          "name": "Cloud Services & DevOps",
+          "description": "Implementation and management of cloud infrastructure, CI/CD pipelines, and DevOps practices"
+        },
+        {
+          "name": "Digital Transformation Consulting",
+          "description": "Strategic guidance for businesses looking to leverage digital technologies to improve operations and create new value"
+        }
+      ],
+      "clientIndustries": [
+        "E-commerce",
+        "Finance",
+        "Healthcare",
+        "Education",
+        "Manufacturing",
+        "Hospitality",
+        "Retail"
+      ],
+      "teamSize": "25+ professionals",
+      "locations": ["Jakarta, Indonesia", "Singapore"]
     }
   ]
 }
