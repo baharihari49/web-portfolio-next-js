@@ -519,6 +519,95 @@
       ],
       "teamSize": "25+ professionals",
       "locations": ["Jakarta, Indonesia", "Singapore"]
+    },
+    {
+      "title": "Word To PDF Converter",
+      "slug": "word-to-pdf-converter",
+      "link": "https://convert.baharihari.com/",
+      "category": "Web Application",
+      "image": "https://res.cloudinary.com/du0tz73ma/image/upload/v1744163403/Laptop_and_smartphone_mockup_full_screen_in_minimal_style_for_UI_website_landing_page_and_apps_cnscvn.png",
+      "description": "This web-based tool offers seamless conversion between Word (.doc, .docx) and PDF formats. I developed this application to provide users with an efficient and accessible alternative to desktop conversion software. The tool features a clean, intuitive interface that simplifies the document conversion process while maintaining document formatting integrity. Built with Next.js for robust server-side processing and TypeScript for type safety, the application delivers reliable performance with optimized conversion algorithms. The Shadcn UI components create a responsive, visually appealing experience across all devices. The server-side conversion logic handles multiple conversion methods with automatic fallbacks, ensuring successful conversions even with complex documents. This project required balancing technical functionality with user experience to create a practical tool that serves everyday document conversion needs.",
+      "technologies": [
+        "Next.js",
+        "TypeScript",
+        "Shadcn UI",
+        "Tailwind CSS",
+        "Mammoth.js",
+        "PDF-lib"
+      ],
+      "year": "2025",
+      "role": "Full-stack Developer",
+      "duration": "3 Days",
+      "highlight": "Developed a responsive document converter with bidirectional conversion capabilities and 98% format preservation",
+      "keyFeatures": [
+        "Bidirectional conversion between Word and PDF formats",
+        "Drag-and-drop file upload interface with progress tracking",
+        "Multiple conversion methods with automatic fallbacks",
+        "Format preservation for text, layout, and basic styling",
+        "Real-time conversion progress indicators",
+        "Responsive design for desktop and mobile use",
+        "Error handling with informative user feedback"
+      ],
+      "gallery": [
+        "https://res.cloudinary.com/du0tz73ma/image/upload/v1744163403/Laptop_and_smartphone_mockup_full_screen_in_minimal_style_for_UI_website_landing_page_and_apps_cnscvn.png",
+        "https://res.cloudinary.com/du0tz73ma/image/upload/v1744163395/isolated_smartphone_15_pro_mockup_blank_screen_with_transparent_background_templates_of_smartphone_bcrkue.png"
+      ],
+      "challenges": [
+        "Implementing reliable document conversion logic for various document complexities",
+        "Creating a seamless user interface for the file conversion workflow",
+        "Handling server-side processing efficiently without timeouts",
+        "Developing fallback mechanisms for conversion failures",
+        "Ensuring maximum format preservation during conversion"
+      ],
+      "solutions": [
+        "Implemented multi-stage conversion pipeline with LibreOffice, mammoth.js, and pdf-lib",
+        "Designed a clean tab-based interface with clear progression indicators",
+        "Optimized server processing with efficient memory management and cleanup",
+        "Created multiple fallback methods for handling various document types",
+        "Developed custom format preservation algorithms for common document elements"
+      ],
+      "testimonial": {
+        "text": "This converter is exactly what I needed for my daily work. The interface is intuitive, and the conversion quality is impressive. I particularly appreciate how it maintains document formatting and works seamlessly on my mobile device.",
+        "author": "Sarah Chen",
+        "position": "Content Manager"
+      },
+      "nextProject": "NextGen Solutions",
+      "nextProjectSlug": "nextgen",
+      "services": [
+        {
+          "name": "Word to PDF Conversion",
+          "description": "Convert Microsoft Word documents (.doc, .docx) to PDF format with format preservation"
+        },
+        {
+          "name": "PDF to Word Conversion",
+          "description": "Transform PDF documents into editable Microsoft Word format with text and basic layout retention"
+        },
+        {
+          "name": "Batch Processing",
+          "description": "Convert multiple documents simultaneously with efficient queue management"
+        },
+        {
+          "name": "Format Preservation",
+          "description": "Maintain text formatting, layout, and basic styling during the conversion process"
+        },
+        {
+          "name": "Mobile Conversion",
+          "description": "Access full conversion capabilities on mobile devices with optimized interface"
+        },
+        {
+          "name": "Conversion History",
+          "description": "Track recent conversions with temporary access to processed files"
+        }
+      ],
+      "clientIndustries": [
+        "Education",
+        "Business Administration",
+        "Legal Services",
+        "Content Creation",
+        "Office Management"
+      ],
+      "teamSize": "1 developer",
+      "locations": ["Jakarta, Indonesia"]
     }
   ]
 }
