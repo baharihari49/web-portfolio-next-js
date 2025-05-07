@@ -3,13 +3,70 @@ import PortfolioFilter from './PortfolioFilter';
 import PortfolioGrid from './PortfolioGrid';
 import Pagination from './Pagination';
 import NoResults from './NoResults';
-import { PortfolioData, FilterType, SearchQueryType } from '@/app/types/portfolio';
-import { filterPortfolioItems } from '@/app/utils/portfolioUtils';
+import { FilterType, SearchQueryType } from '@/app/types/portfolio';
 
-// Import portfolio data
-import portfolioData from '@/app/data/portfolio.json';
+// Define the API response type
+interface ApiResponse {
+  success: boolean;
+  data: PortfolioItem[];
+}
+
+// Define portfolio item type based on your JSON structure
+interface PortfolioItem {
+  id: string;
+  title: string;
+  slug: string;
+  category: string;
+  image: string;
+  description: string;
+  technologies: string[];
+  year: string;
+  role: string;
+  duration: string;
+  highlight: string;
+  keyFeatures: string[];
+  gallery: string[];
+  challenges: string[];
+  solutions: string[];
+  testimonial: {
+    text: string;
+    author: string;
+    position: string;
+  };
+  nextProject: string;
+  nextProjectSlug: string;
+  createdAt: string;
+  updatedAt: string;
+  link?: string;
+}
+
+// Function to filter portfolio items
+const filterPortfolioItems = (
+  items: PortfolioItem[],
+  filter: FilterType,
+  searchQuery: SearchQueryType
+): PortfolioItem[] => {
+  return items.filter((item) => {
+    // Filter by category
+    const categoryMatch = filter === 'all' || item.category === filter;
+    
+    // Filter by search query
+    const searchMatch = searchQuery === '' || 
+      item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.technologies.some(tech => 
+        tech.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    
+    return categoryMatch && searchMatch;
+  });
+};
 
 const Portfolio: React.FC = () => {
+  const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+  
   const [filter, setFilter] = useState<FilterType>('all');
   const [categories, setCategories] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState<SearchQueryType>('');
@@ -18,14 +75,38 @@ const Portfolio: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(6);
 
-  // Type-safe way to access the portfolio data
-  const portfolioItems = (portfolioData as PortfolioData).items;
-
-  // Extract unique categories
+  // Fetch portfolio items from API
   useEffect(() => {
-    const uniqueCategories = ['all', ...new Set(portfolioItems.map(item => item.category))];
-    setCategories(uniqueCategories);
-  }, [portfolioItems]);
+    const fetchPortfolioItems = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/portfolio`);
+        
+        if (!response.ok) {
+          throw new Error(`Error: ${response.status}`);
+        }
+        
+        const result: ApiResponse = await response.json();
+        
+        if (result.success && Array.isArray(result.data)) {
+          setPortfolioItems(result.data);
+          
+          // Extract unique categories
+          const uniqueCategories = ['all', ...new Set(result.data.map(item => item.category))];
+          setCategories(uniqueCategories);
+        } else {
+          throw new Error('Invalid data format received from API');
+        }
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'An unknown error occurred');
+        console.error('Failed to fetch portfolio items:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPortfolioItems();
+  }, []);
 
   // Reset to first page when filter or search changes
   useEffect(() => {
@@ -36,13 +117,13 @@ const Portfolio: React.FC = () => {
   const filteredItems = filterPortfolioItems(portfolioItems, filter, searchQuery);
   
   // Sort items in reverse order (from bottom to top)
-  const reversedItems = [...filteredItems].reverse();
+  // const reversedItems = [...filteredItems].reverse();
     
   // Pagination calculations
-  const totalPages = Math.ceil(reversedItems.length / itemsPerPage);
+  const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = reversedItems.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = filteredItems.slice(indexOfFirstItem, indexOfLastItem);
   
   // Page change handler
   const paginate = (pageNumber: number) => {
@@ -81,29 +162,50 @@ const Portfolio: React.FC = () => {
           </p>
         </div>
         
-        {/* Search and filter bar */}
-        <PortfolioFilter 
-          filter={filter}
-          setFilter={setFilter}
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-          categories={categories}
-        />
-        
-        {/* No results message */}
-        {reversedItems.length === 0 ? (
-          <NoResults resetFilters={resetFilters} />
+        {loading ? (
+          <div className="flex justify-center items-center h-64">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+          </div>
+        ) : error ? (
+          <div className="text-center text-red-500 p-8 bg-red-50 rounded-lg">
+            <h3 className="text-xl font-semibold mb-2">Error Loading Projects</h3>
+            <p>{error}</p>
+            <button 
+              onClick={() => window.location.reload()} 
+              className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+            >
+              Try Again
+            </button>
+          </div>
         ) : (
           <>
-            {/* Project grid */}
-            <PortfolioGrid items={currentItems} currentPage={currentPage} />
-            
-            {/* Pagination */}
-            <Pagination 
-              currentPage={currentPage} 
-              totalPages={totalPages} 
-              paginate={paginate} 
+            {/* Search and filter bar */}
+            <PortfolioFilter 
+              filter={filter}
+              setFilter={setFilter}
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+              categories={categories}
             />
+            
+            {/* No results message */}
+            {filteredItems.length === 0 ? (
+              <NoResults resetFilters={resetFilters} />
+            ) : (
+              <>
+                {/* Project grid */}
+                <PortfolioGrid items={currentItems} currentPage={currentPage} />
+                
+                {/* Pagination */}
+                {totalPages > 1 && (
+                  <Pagination 
+                    currentPage={currentPage} 
+                    totalPages={totalPages} 
+                    paginate={paginate} 
+                  />
+                )}
+              </>
+            )}
           </>
         )}
       </div>

@@ -12,10 +12,7 @@ import {
 import { Footer } from '@/components/Footer';
 
 // Import types
-import { PortfolioItem, PortfolioData } from '@/app/types/portfolio';
-
-// Import portfolio data
-import portfolioData from '@/app/data/portfolio.json';
+import { PortfolioItem } from '@/app/types/portfolio';
 
 // Get technology color based on name (for consistent tech tag colors)
 const getTechColor = (tech: string) => {
@@ -48,34 +45,57 @@ export default function ProjectDetail({ params }: { params: Promise<{ slug: stri
   const unwrappedParams = React.use(params);
   const { slug } = unwrappedParams;
   const [project, setProject] = useState<PortfolioItem | null>(null);
+  const [allProjects, setAllProjects] = useState<PortfolioItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [activeImage, setActiveImage] = useState(0);
   
-  // Demo URL - if not in the JSON, can be added here
+  // Demo URL - if not in the response, can be added here
   const [demoUrl, setDemoUrl] = useState<string | null>(null);
 
-  // Type-safe way to access the portfolio data
-  const portfolioItems = (portfolioData as PortfolioData).items;
-
+  // Fetch all projects for navigation and current project data
   useEffect(() => {
-    if (!slug) return;
-
-    // Find the project data based on slug
-    const foundProject = portfolioItems.find(item => item.slug === slug);
-    if (foundProject) {
-      setProject(foundProject);
+    const fetchData = async () => {
+      if (!slug) return;
       
-      // Set demo URL based on project type
-      // This can be customized per project as needed
-      if (foundProject.link) {
-        setDemoUrl(foundProject.link);
+      setLoading(true);
+      try {
+        // Fetch all portfolio data
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/portfolio`);
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch portfolio data: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        const portfolioItems = data.data || [];
+        setAllProjects(portfolioItems);
+        
+        // Find the current project
+        const foundProject = portfolioItems.find((item: PortfolioItem) => item.slug === slug);
+        if (foundProject) {
+          setProject(foundProject);
+          
+          // Set demo URL if project has a link
+          if (foundProject.link) {
+            setDemoUrl(foundProject.link);
+          }
+        } else {
+          setError('Project not found');
+        }
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'An error occurred');
+        console.error('Error fetching project data:', err);
+      } finally {
+        setLoading(false);
       }
-    }
-    setLoading(false);
-  }, [slug, portfolioItems]);
+    };
+
+    fetchData();
+  }, [slug]);
 
   // Handle navigation to a non-existent project
-  if (!loading && !project) {
+  if (!loading && (error || !project)) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-4">
         <div className="text-center">
@@ -560,9 +580,9 @@ export default function ProjectDetail({ params }: { params: Promise<{ slug: stri
                 <div className="flex flex-col md:flex-row items-center">
                   <div className="w-full md:w-1/3 h-48 md:h-32 relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-600/80 to-indigo-600/80 z-10"></div>
-                    {portfolioItems.find(p => p.slug === project.nextProjectSlug)?.image && (
+                    {allProjects.find(p => p.slug === project.nextProjectSlug)?.image && (
                       <Image
-                        src={portfolioItems.find(p => p.slug === project.nextProjectSlug)?.image || ''}
+                        src={allProjects.find(p => p.slug === project.nextProjectSlug)?.image || ''}
                         alt={project.nextProject}
                         fill
                         className="object-cover"
