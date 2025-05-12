@@ -13,7 +13,7 @@ export interface ExperienceItem {
   }
   
   export interface ExperiencesData {
-    item: ExperienceItem[];
+    data: ExperienceItem[];
   }
   
   export type ExperienceTabType = 'all' | 'current' | 'previous';
