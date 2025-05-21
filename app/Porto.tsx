@@ -14,6 +14,7 @@ import { Contact } from '../components/Contact/Contact';
 import { Footer } from '../components/Footer';
 import TechStack from '../components/TechStack';
 import { useEmailJsInit } from '../lib/emailJs';
+import BlogSection from '@/components/Blog';
 
 interface PortoProps {
   scrollToSection: (sectionId: string) => void;
@@ -114,6 +115,7 @@ const BahariPortfolio = () => {
       <Stats />
       <Testimonials />
       <Contact />
+      <BlogSection/>
       <Footer />
       <BackToTop scrollToSection={scrollToSection} />
     </div>

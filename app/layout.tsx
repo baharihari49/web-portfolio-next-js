@@ -71,10 +71,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        style={{ fontFamily: "Roboto" }}
         className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} antialiased`}
+        style={{ 
+          fontFamily: "Roboto",
+        } as React.CSSProperties}
+        suppressHydrationWarning
       >
         {children}
       </body>
