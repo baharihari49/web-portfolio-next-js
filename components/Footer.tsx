@@ -6,7 +6,9 @@ import {
   MapPin,
   ExternalLink,
   ChevronRight,
-  Heart
+  Heart,
+  // Shield,
+  // FileText
 } from 'lucide-react';
 import Image from 'next/image';
 import { FiGithub } from "react-icons/fi";
@@ -29,6 +31,11 @@ export const Footer = () => {
     'React Development',
     'Full Stack Services'
   ];
+
+  // const legalLinks = [
+  //   { name: 'Terms of Service', url: '/terms-of-service', icon: FileText },
+  //   { name: 'Privacy Policy', url: '/privacy-policy', icon: Shield },
+  // ];
 
   return (
     <footer className="bg-gradient-to-br from-indigo-600 via-blue-700 to-indigo-800 text-white pt-20 pb-8 relative overflow-hidden">
@@ -106,6 +113,27 @@ export const Footer = () => {
                 </li>
               ))}
             </ul>
+
+            {/* Legal Links */}
+            {/* <div className="mt-8">
+              <h5 className="text-sm font-semibold mb-4 text-gray-200">Legal</h5>
+              <ul className="space-y-3">
+                {legalLinks.map((link, index) => {
+                  const IconComponent = link.icon;
+                  return (
+                    <li key={index}>
+                      <a
+                        href={link.url}
+                        className="text-gray-300 hover:text-white transition-colors duration-300 flex items-center text-sm"
+                      >
+                        <IconComponent className="w-4 h-4 text-gray-300 mr-2" />
+                        {link.name}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div> */}
           </div>
 
           {/* Column 3: Services */}
@@ -174,12 +202,28 @@ export const Footer = () => {
         {/* Footer divider */}
         <div className="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent mb-8"></div>
 
-        {/* Bottom section with copyright */}
+        {/* Bottom section with copyright and legal links */}
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0 text-center md:text-left">
-            <p className="text-gray-200">
+            <p className="text-gray-200 mb-2">
               &copy; 2022 Bahari. All rights reserved.
             </p>
+            {/* Legal links for mobile/bottom */}
+            <div className="flex items-center justify-center md:justify-start space-x-4 text-sm">
+              <a
+                href="/terms-of-service"
+                className="text-gray-300 hover:text-white transition-colors duration-300"
+              >
+                Terms of Service
+              </a>
+              <span className="text-gray-500">•</span>
+              <a
+                href="/privacy-policy"
+                className="text-gray-300 hover:text-white transition-colors duration-300"
+              >
+                Privacy Policy
+              </a>
+            </div>
           </div>
           <div className="text-center md:text-right">
             <p className="text-gray-400 text-sm">
