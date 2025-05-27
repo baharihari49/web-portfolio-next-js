@@ -1,5 +1,6 @@
 // types/blog.ts (updated with proper definitions)
 export interface BlogPost {
+  updatedAt: string;
   id: number;
   slug: string;
   thumbnail: string;
