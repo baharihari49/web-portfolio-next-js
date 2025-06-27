@@ -1,0 +1,59 @@
+// CustomStyles.tsx
+'use client'
+import React from 'react';
+
+const CustomStyles = () => (
+  <style jsx global>{`
+    @keyframes blob {
+      0% {
+        transform: translate(0px, 0px) scale(1);
+      }
+      33% {
+        transform: translate(30px, -50px) scale(1.1);
+      }
+      66% {
+        transform: translate(-20px, 20px) scale(0.9);
+      }
+      100% {
+        transform: translate(0px, 0px) scale(1);
+      }
+    }
+    
+    .animate-blob {
+      animation: blob 7s infinite;
+    }
+    
+    .animation-delay-2000 {
+      animation-delay: 2s;
+    }
+    
+    .animation-delay-4000 {
+      animation-delay: 4s;
+    }
+
+    /* Smooth scrolling for the entire page */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #3b82f6;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #2563eb;
+    }
+  `}</style>
+);
+
+export default CustomStyles;

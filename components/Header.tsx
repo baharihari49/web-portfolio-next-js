@@ -6,16 +6,19 @@ import { usePathname } from "next/navigation";
 import { Menu, X, Home, User, Briefcase, Image as ImageIcon, MessageSquare, Phone, FileText } from 'lucide-react';
 
 interface HeaderProps {
-  activeSection: string;
-  scrollToSection?: (sectionId: string) => void; // Make optional
+  activeSection?: string;
+  scrollToSection?: (sectionId: string) => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ activeSection, scrollToSection }) => {
+export const Header: React.FC<HeaderProps> = ({ 
+  activeSection = 'home', 
+  scrollToSection 
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
   const [headerHeight, setHeaderHeight] = useState(0);
-  const pathname = usePathname(); // Get current path
+  const pathname = usePathname();
 
   // Check if we're on the homepage or another page
   const isHomePage = pathname === "/" || pathname === "/#" || pathname.startsWith("/#");
@@ -28,13 +31,9 @@ export const Header: React.FC<HeaderProps> = ({ activeSection, scrollToSection }
       }
     };
 
-    // Initial calculation
     updateHeaderHeight();
-
-    // Recalculate after a short delay to ensure accurate measurement
     const timeoutId = setTimeout(updateHeaderHeight, 100);
 
-    // Add listeners for various events that might affect header height
     window.addEventListener('resize', updateHeaderHeight);
     window.addEventListener('load', updateHeaderHeight);
 
@@ -43,7 +42,7 @@ export const Header: React.FC<HeaderProps> = ({ activeSection, scrollToSection }
       window.removeEventListener('load', updateHeaderHeight);
       clearTimeout(timeoutId);
     };
-  }, [scrolled, isOpen]); // Recalculate when scrolled state or menu state changes
+  }, [scrolled, isOpen]);
 
   // Handle scroll events to change header appearance
   useEffect(() => {
@@ -97,34 +96,28 @@ export const Header: React.FC<HeaderProps> = ({ activeSection, scrollToSection }
 
     // Check if it's an absolute URL (external link)
     if (href.startsWith('/')) {
-      // Use window.location for external page navigation
       window.location.href = href;
       return;
     }
 
     // Check if we're on homepage and it's a section link
-    if (isHomePage && href.startsWith('#')) {
-      if (scrollToSection) {
-        scrollToSection(href);
-      }
+    if (isHomePage && href.startsWith('#') && scrollToSection) {
+      scrollToSection(href);
       return;
     }
 
     // If we're NOT on homepage but trying to navigate to a section on homepage
     if (!isHomePage && href.startsWith('#')) {
-      // Navigate to homepage with the section hash
       window.location.href = '/' + href;
       return;
     }
 
-    // Default fallback (shouldn't reach here)
+    // Default fallback
     window.location.href = href;
   };
 
-  // Render different navigation items based on current page\
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // Render navigation items
   const renderNavLink = (item: any, index: number) => {
-    // For the blog link which is an absolute URL
     if (item.href === '/blog') {
       return (
         <Link
@@ -141,7 +134,6 @@ export const Header: React.FC<HeaderProps> = ({ activeSection, scrollToSection }
       );
     }
 
-    // For section links
     const isActive = isHomePage && activeSection === item.href.substring(1);
     return (
       <a
@@ -161,10 +153,7 @@ export const Header: React.FC<HeaderProps> = ({ activeSection, scrollToSection }
     );
   };
 
-  // Render mobile navigation items
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const renderMobileNavLink = (item: any, index: number) => {
-    // For the blog link which is an absolute URL
     if (item.href === '/blog') {
       return (
         <Link
@@ -184,7 +173,6 @@ export const Header: React.FC<HeaderProps> = ({ activeSection, scrollToSection }
       );
     }
 
-    // For section links
     const isActive = isHomePage && activeSection === item.href.substring(1);
     return (
       <a
@@ -274,7 +262,7 @@ export const Header: React.FC<HeaderProps> = ({ activeSection, scrollToSection }
         className={`md:hidden fixed right-0 w-4/5 max-w-sm bg-white z-50 shadow-xl transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         style={{
-          top: `${Math.max(headerHeight, 60)}px`, /* Use fallback minimum height */
+          top: `${Math.max(headerHeight, 60)}px`,
           height: `calc(100vh - ${Math.max(headerHeight, 60)}px)`,
           paddingTop: '1rem',
           overflowY: 'auto'

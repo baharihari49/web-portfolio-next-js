@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useState } from 'react';
 import { ArrowRight, Github, Instagram, Linkedin, Calendar, Sparkles, Code, Layout } from 'lucide-react';
 

@@ -1,3 +1,4 @@
+'use client';
 import React, { useState, useEffect, useRef } from 'react';
 import {
   Users, Award, Clock, CheckCircle, Zap, Code, Heart,

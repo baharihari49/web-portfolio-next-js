@@ -1,3 +1,4 @@
+'use client';
 import { useState, useEffect } from 'react';
 
 type AvailabilityStatus = 'available' | 'limited' | 'away' | 'unknown';
