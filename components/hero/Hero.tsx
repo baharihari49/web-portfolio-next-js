@@ -1,155 +1,174 @@
-// Hero.tsx (Server Component)
+// ====== FIX HERO IMAGE SRC ======
+// File: components/hero/Hero.tsx
+
 import React from 'react';
 import Image from 'next/image';
 import { ArrowRight, ArrowDown, Code, Zap, ExternalLink, Mail } from 'lucide-react';
 import { FiGithub } from "react-icons/fi";
 import { LiaLinkedin } from "react-icons/lia";
 import { FaInstagram } from "react-icons/fa";
-import HeroClient from './HeroClient'; // Client component for animations
+import HeroClient from './HeroClient';
 
-interface HeroProps {
-  scrollToSection?: (sectionId: string) => void;
-}
-
-// Hero Server Component
-export const Hero: React.FC<HeroProps> = ({ scrollToSection }) => {
+const Hero: React.FC = () => {
   return (
-    <section id="home" className="relative min-h-screen pt-32 pb-20 md:pt-36 md:pb-32 bg-gradient-to-br from-indigo-600 via-purple-600 to-blue-500 overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute top-0 left-0 w-full h-full">
-        <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-white rounded-full mix-blend-overlay filter blur-3xl opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-1/3 left-1/3 w-80 h-80 bg-white rounded-full mix-blend-overlay filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-2/3 right-1/2 w-40 h-40 bg-white rounded-full mix-blend-overlay filter blur-3xl opacity-10 animate-pulse" style={{ animationDelay: '2s' }}></div>
-        
-        {/* Code-like decoration elements */}
-        <div className="absolute top-20 left-10 text-white opacity-5 text-4xl font-mono">
-          &lt;div&gt;
-        </div>
-        <div className="absolute bottom-20 right-10 text-white opacity-5 text-4xl font-mono">
-          &lt;/div&gt;
-        </div>
-        <div className="absolute top-1/2 left-1/4 text-white opacity-5 text-2xl font-mono">
-          const Developer = () =&gt; &#123;
-        </div>
-        <div className="absolute bottom-1/3 right-1/4 text-white opacity-5 text-2xl font-mono">
-          &#125;;
-        </div>
-      </div>
+    <section id="home" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-indigo-50"></div>
       
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="flex flex-col md:flex-row items-center">
-          {/* Content Section */}
-          <HeroClient scrollToSection={scrollToSection}>
-            <div className="md:w-3/5 md:pr-12">
-              <div className="mb-8 md:mb-0 text-white">
-                <div className="relative inline-block">
-                  <span className="absolute -bottom-1 left-0 w-full h-1 bg-white"></span>
-                  <h3 className="text-lg font-medium text-blue-100">Hello, I&apos;m Bahari</h3>
-                </div>
-                
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 mb-6 leading-tight">
-                  Frontend Developer & <span className="text-blue-200">Full Stack Web Dev</span>
-                </h1>
-                
-                <p className="text-xl text-blue-100 mb-8 md:pr-10 max-w-2xl">
-                  I&apos;m experienced in creating responsive web applications using modern technologies
-                  like React, Vue.js, and Laravel.
-                </p>
-                
-                <div className="flex flex-wrap gap-4">
+      {/* Animated Background Blobs */}
+      <div className="absolute top-20 left-10 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+      <div className="absolute top-20 right-10 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+      <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+
+      {/* Wrap content dengan HeroClient untuk interaktivitas */}
+      <HeroClient>
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center min-h-screen">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center justify-items-center w-full py-20">
+            
+            {/* Left Content - Centered text */}
+            <div className="text-center lg:text-left flex flex-col justify-center">
+              <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium mb-6 mx-auto lg:mx-0 w-fit">
+                <Code className="w-4 h-4 mr-2" />
+                Available for new opportunities
+              </div>
+
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+                Hello! I'm{' '}
+                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  Bahari
+                </span>
+              </h1>
+
+              <h2 className="text-xl sm:text-2xl text-gray-600 mb-8 leading-relaxed">
+                Full Stack Developer crafting digital experiences with{' '}
+                <span className="text-blue-600 font-semibold">React</span>,{' '}
+                <span className="text-purple-600 font-semibold">Laravel</span>, and{' '}
+                <span className="text-green-600 font-semibold">Node.js</span>
+              </h2>
+
+              <p className="text-lg text-gray-600 mb-10 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                Passionate about creating robust web applications that solve real-world problems. 
+                Let's build something amazing together!
+              </p>
+
+              {/* CTA Buttons - Centered */}
+              <div className="flex flex-col sm:flex-row gap-4 mb-12 justify-center lg:justify-start">
+                <a
+                  href="#contact"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-700 hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                >
+                  <Mail className="w-5 h-5 mr-2" />
+                  Get In Touch
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </a>
+
+                <a
+                  href="#portfolio"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-gray-800 font-semibold rounded-lg shadow-lg border-2 border-gray-200 hover:border-blue-300 hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                >
+                  <Zap className="w-5 h-5 mr-2" />
+                  View My Work
+                  <ExternalLink className="w-5 h-5 ml-2" />
+                </a>
+              </div>
+
+              {/* Social Links - Centered */}
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-6">
+                <span className="text-gray-600 font-medium">Follow me:</span>
+                <div className="flex space-x-4">
                   <a
-                    href="mailto:hello@baharihari.com"
-                    className="px-8 py-4 bg-white text-indigo-600 rounded-full font-medium hover:bg-opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center"
-                  >
-                    Let&apos;s Talk <ArrowRight size={18} className="ml-2" />
-                  </a>
-                  
-                  <button
-                    onClick={() => scrollToSection?.('#portfolio')}
-                    className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-full font-medium hover:bg-white hover:bg-opacity-10 transition-all duration-300 flex items-center"
-                  >
-                    View Work <ExternalLink size={18} className="ml-2" />
-                  </button>
-                </div>
-                
-                {/* Social links */}
-                <div className="flex items-center space-x-4 mt-10">
-                  <span className="text-blue-100 text-sm">Connect with me:</span>
-                  <a 
-                    href="https://github.com/baharihari49" 
+                    href="https://github.com/yourusername"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition-colors"
+                    className="p-3 bg-white rounded-full shadow-md hover:shadow-lg transform hover:scale-110 transition-all duration-300 group"
                   >
-                    <FiGithub className="w-5 h-5 text-white" />
+                    <FiGithub className="w-5 h-5 text-gray-700 group-hover:text-gray-900" />
                   </a>
-                  <a 
-                    href="https://www.linkedin.com/in/bahari49/" 
+                  <a
+                    href="https://linkedin.com/in/yourusername"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition-colors"
+                    className="p-3 bg-white rounded-full shadow-md hover:shadow-lg transform hover:scale-110 transition-all duration-300 group"
                   >
-                    <LiaLinkedin className="w-6 h-6 text-white" />
+                    <LiaLinkedin className="w-5 h-5 text-blue-600 group-hover:text-blue-700" />
                   </a>
-                  <a 
-                    href="https://www.instagram.com/bahar.iii1/" 
+                  <a
+                    href="https://instagram.com/yourusername"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition-colors"
+                    className="p-3 bg-white rounded-full shadow-md hover:shadow-lg transform hover:scale-110 transition-all duration-300 group"
                   >
-                    <FaInstagram className="w-6 h-6 text-white" />
-                  </a>
-                  <a 
-                    href="mailto:hello@baharihari.com" 
-                    className="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition-colors"
-                  >
-                    <Mail className="w-5 h-5 text-white" />
+                    <FaInstagram className="w-5 h-5 text-pink-600 group-hover:text-pink-700" />
                   </a>
                 </div>
               </div>
             </div>
-            
-            {/* Image Section */}
-            <div className="md:w-2/5 2xl:w-3/5 mt-12 md:mt-0 flex justify-center">
-              <div className="relative max-w-sm">
-                {/* Decorative elements around the image */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-indigo-400 to-purple-500 rounded-2xl transform rotate-3 scale-105 opacity-70"></div>
-                <div className="absolute inset-0 border-2 border-white border-opacity-20 rounded-2xl transform -rotate-2 scale-95"></div>
+
+            {/* Right Content - Centered image */}
+            <div className="relative flex items-center justify-center">
+              <div className="relative w-80 h-96 mx-auto lg:w-96 lg:h-[28rem]">
+                {/* Background blur effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-500 rounded-3xl blur-3xl opacity-20 animate-pulse"></div>
                 
-                <div className="relative z-10 rounded-2xl shadow-2xl overflow-hidden md:w-96 2xl:w-[25rem] transform transition-transform duration-500 hover:scale-105">
+                {/* Main image container - kotak dengan rounded corners */}
+                <div className="relative w-full h-full rounded-3xl overflow-hidden border-4 border-white shadow-2xl bg-gradient-to-br from-blue-50 to-purple-50">
+                  {/* ✅ UPDATE: Gunakan Cloudinary URL dengan aspect ratio kotak */}
                   <Image
                     src="https://res.cloudinary.com/du0tz73ma/image/upload/c_fill,w_2475,h_3420/v1733248656/IMG-20241110-WA0013_jwgzp5.jpg"
-                    alt="Bahari"
-                    width={2475}
-                    height={3420}
+                    alt="Bahari Dwi Setyo - Full Stack Developer"
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 768px) 320px, 384px"
                     priority
-                    className="max-w-full w-80 md:w-full h-auto object-cover"
+                    quality={90}
                   />
+                  
+                  {/* Overlay gradient untuk depth */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent"></div>
                 </div>
                 
-                {/* Floating badges */}
-                <div className="absolute -top-6 -right-6 bg-white text-indigo-600 px-4 py-2 rounded-full shadow-lg font-medium text-sm z-20 flex items-center">
-                  <Code className="w-4 h-4 mr-2" />
-                  Full Stack Dev
+                {/* Floating Badge - Experience */}
+                <div className="absolute -top-3 -right-3 bg-yellow-400 text-yellow-900 px-4 py-2 rounded-2xl text-sm font-semibold shadow-lg animate-bounce backdrop-blur-sm">
+                  2.5+ Years
                 </div>
-                <div className="absolute -bottom-6 -left-6 bg-white text-indigo-600 px-4 py-2 rounded-full shadow-lg font-medium text-sm z-20 flex items-center">
-                  <Zap className="w-4 h-4 mr-2" />
-                  React Expert
+                
+                {/* Floating Badge - Projects */}
+                <div className="absolute -bottom-3 -left-3 bg-green-400 text-green-900 px-4 py-2 rounded-2xl text-sm font-semibold shadow-lg animate-bounce animation-delay-2000 backdrop-blur-sm">
+                  10+ Projects
                 </div>
+                
+                {/* Modern geometric decorations */}
+                <div className="absolute top-4 left-4 w-8 h-8 bg-white/20 rounded-lg rotate-12 animate-pulse"></div>
+                <div className="absolute bottom-16 right-4 w-6 h-6 bg-blue-400/30 rounded-md rotate-45 animate-pulse animation-delay-2000"></div>
               </div>
+
+              {/* Modern floating elements */}
+              <div className="absolute top-8 -left-8 w-24 h-6 bg-blue-200/60 rounded-full blur-lg animate-pulse"></div>
+              <div className="absolute bottom-24 -right-6 w-16 h-16 bg-purple-200/40 rounded-2xl blur-lg animate-pulse animation-delay-4000"></div>
+              <div className="absolute top-32 -right-4 w-12 h-12 bg-pink-200/50 rounded-xl blur-lg animate-pulse animation-delay-6000"></div>
             </div>
-          </HeroClient>
+
+          </div>
+
+          {/* Scroll Indicator - Fixed ke bottom viewport */}
+          <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce z-50">
+            <a
+              href="#about"
+              className="flex flex-col items-center text-gray-600 hover:text-blue-600 transition-colors duration-300 group"
+            >
+              <span className="text-xs sm:text-sm font-medium mb-1 sm:mb-2 group-hover:text-blue-600 transition-colors duration-300 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm">
+                Scroll to explore
+              </span>
+              <div className="p-2 rounded-full bg-white/90 backdrop-blur-sm shadow-lg group-hover:shadow-xl transition-all duration-300 border border-gray-200/50">
+                <ArrowDown className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-y-0.5 transition-transform duration-300" />
+              </div>
+            </a>
+          </div>
+
         </div>
-      </div>
-      
-      {/* Scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
-        <span className="text-white text-sm mb-2 animate-bounce">Scroll Down</span>
-        <ArrowDown className="w-5 h-5 text-white animate-bounce" />
-      </div>
-      
-      {/* Straight line at bottom */}
-      <div className="absolute bottom-0 left-0 w-full h-1 bg-white"></div>
+      </HeroClient>
     </section>
   );
 };
+
+export default Hero;
