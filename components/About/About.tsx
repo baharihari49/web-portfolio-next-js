@@ -202,14 +202,14 @@ export const About = () => {
             
             {/* Left: Image Section */}
             <div className="relative animate-on-scroll" data-animation="animate-fade-in-left" data-delay="300">
-              <div className="relative bg-white rounded-3xl p-6 shadow-lg image-container transition-all duration-500">
+              <div className="relative bg-white shadow-lg image-container rounded-2xl transition-all duration-500">
                 {/* Main Image */}
-                <div className="relative w-full h-[500px] md:h-[600px] rounded-2xl overflow-hidden mb-4 image-hover">
+                <div className="relative w-full h-[500px] md:h-[600px] rounded-2xl overflow-hidden image-hover border-4 border-white">
                   <Image
                     src="https://res.cloudinary.com/du0tz73ma/image/upload/c_fill,w_500,h_712/v1733249983/IMG-20240331-WA0008_xebcsy.jpg"
                     alt="Bahari Dwi Setyo - Developer Working"
                     fill
-                    className="object-cover object-center transition-transform duration-700"
+                    className="object-cover object-center transition-transform duration-700 rounded-2xl"
                     quality={90}
                   />
                   {/* Image overlay effect */}

@@ -1,3 +1,5 @@
+// components/Experience/FilterTabs.tsx
+'use client';
 import React from 'react';
 import { ExperienceTabType } from '@/app/types/experience';
 
@@ -7,40 +9,38 @@ interface FilterTabsProps {
 }
 
 const FilterTabs: React.FC<FilterTabsProps> = ({ activeTab, setActiveTab }) => {
+  const tabs = [
+    {
+      key: 'all' as ExperienceTabType,
+      label: 'All Experience'
+    },
+    {
+      key: 'current' as ExperienceTabType,
+      label: 'Current Position'
+    },
+    {
+      key: 'previous' as ExperienceTabType,
+      label: 'Previous Roles'
+    }
+  ];
+
   return (
-    <div className="flex justify-center mb-12">
-      <div className="bg-white p-1 rounded-xl shadow-md inline-flex">
+    <div className="flex items-center bg-gray-100 rounded-full p-1">
+      {tabs.map((tab) => (
         <button
-          onClick={() => setActiveTab('all')}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-            activeTab === 'all' 
-              ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-sm' 
-              : 'text-gray-600 hover:bg-gray-100'
-          }`}
+          key={tab.key}
+          onClick={() => setActiveTab(tab.key)}
+          className={`
+            relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 whitespace-nowrap
+            ${activeTab === tab.key
+              ? 'bg-blue-600 text-white shadow-sm'
+              : 'text-gray-600 hover:text-gray-900 hover:bg-gray-200/50'
+            }
+          `}
         >
-          All Experience
+          {tab.label}
         </button>
-        <button
-          onClick={() => setActiveTab('current')}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-            activeTab === 'current' 
-              ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-sm' 
-              : 'text-gray-600 hover:bg-gray-100'
-          }`}
-        >
-          Current Position
-        </button>
-        <button
-          onClick={() => setActiveTab('previous')}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-            activeTab === 'previous' 
-              ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-sm' 
-              : 'text-gray-600 hover:bg-gray-100'
-          }`}
-        >
-          Previous Roles
-        </button>
-      </div>
+      ))}
     </div>
   );
 };
