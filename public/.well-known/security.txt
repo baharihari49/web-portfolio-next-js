@@ -1,0 +1,7 @@
+Contact: mailto:baharihari49@gmail.com
+Expires: 2026-01-07T00:00:00.000Z
+Preferred-Languages: en, id
+Canonical: https://baharihari.com/.well-known/security.txt
+
+# Security Policy for baharihari.com
+# If you find any security issues, please contact us responsibly.

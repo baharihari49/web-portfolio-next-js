@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { HelpCircle, ChevronUp, ChevronDown } from 'lucide-react';
 import { faqData } from './data/faqData';
+import { FAQSchema } from '@/components/seo/FAQSchema';
 
 const FAQSection: React.FC = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
@@ -11,13 +12,25 @@ const FAQSection: React.FC = () => {
   };
 
   return (
-    <div className="mt-20">
-      <div className="text-center mb-12">
-        <h3 className="text-2xl font-bold mb-4 text-gray-800">Frequently Asked Questions</h3>
-        <p className="text-gray-600 max-w-2xl mx-auto">
-          Find quick answers to common questions about working with me
-        </p>
-      </div>
+    <>
+      <FAQSchema 
+        faqs={faqData.map(faq => ({
+          question: faq.question,
+          answer: faq.answer
+        }))}
+        mainEntity={{
+          name: "Contact - Bahari Frontend Developer",
+          url: "https://baharihari.com#contact"
+        }}
+      />
+      
+      <div className="mt-20">
+        <div className="text-center mb-12">
+          <h3 className="text-2xl font-bold mb-4 text-gray-800">Frequently Asked Questions</h3>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Find quick answers to common questions about working with me
+          </p>
+        </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {faqData.map((faq, index) => (
@@ -52,6 +65,7 @@ const FAQSection: React.FC = () => {
         ))}
       </div>
     </div>
+    </>
   );
 };
 

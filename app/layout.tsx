@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Roboto } from "next/font/google";
+import PerformanceProvider from "@/components/performance/PerformanceProvider";
 
 // Font config
 const geistSans = Geist({
@@ -46,6 +47,10 @@ export const metadata: Metadata = {
   viewport: "width=device-width, initial-scale=1, shrink-to-fit=no",
   alternates: {
     canonical: "https://baharihari.com",
+    languages: {
+      'en-US': 'https://baharihari.com',
+      'x-default': 'https://baharihari.com',
+    },
   },
   icons: {
     icon: "https://res.cloudinary.com/du0tz73ma/image/upload/v1733663814/Group_1_1_z6fjj3.png",
@@ -91,7 +96,12 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "your-google-verification-code",
+    google: "google-site-verification-placeholder",
+    yandex: "yandex-verification-placeholder",
+    yahoo: "yahoo-site-verification-placeholder",
+    other: {
+      'msvalidate.01': 'bing-verification-placeholder',
+    },
   },
 };
 
@@ -101,7 +111,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en-US" suppressHydrationWarning>
       <head>
         {/* JSON-LD Structured Data for Person/Organization */}
         <script
@@ -256,7 +266,19 @@ export default function RootLayout({
         } as React.CSSProperties}
         suppressHydrationWarning
       >
-        {children}
+        <PerformanceProvider
+          enableWebVitals={process.env.NODE_ENV === 'production'}
+          enableServiceWorker={process.env.NODE_ENV === 'production'}
+          criticalResources={[
+            {
+              href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap',
+              as: 'style',
+              crossOrigin: true,
+            },
+          ]}
+        >
+          {children}
+        </PerformanceProvider>
       </body>
     </html>
   );

@@ -8,10 +8,12 @@ import { useParams, useRouter } from 'next/navigation';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Breadcrumbs, BreadcrumbStructuredData } from '@/components/ui/breadcrumbs';
+import { ReadingProgress } from '@/components/ui/ReadingProgress';
+import { RelatedContent } from '@/components/ui/RelatedContent';
+import { FullSocialShare } from '@/components/ui/SocialShareButtons';
 import RelatedPostsSection from '@/components/blog/RelatedPostsSection';
 import AuthorBio from '@/components/blog/AuthorBio';
 import CommentsSection from '@/components/blog/CommentsSection';
-import SocialShareButtons from '@/components/blog/SocialShareButtons';
 import PostNavigation from '@/components/blog/PostNavigation';
 import TableOfContents from '@/components/blog/TableOfContents';
 import { BlogPost } from '@/components/blog/types/blog';
@@ -30,7 +32,18 @@ export default function BlogDetailPage(): JSX.Element {
   // URL for sharing
   const currentUrl = typeof window !== 'undefined' 
     ? window.location.href 
-    : `https://yourdomain.com/blog/${params.slug}`;
+    : `https://baharihari.com/blog/${params.slug}`;
+
+  // Handle social sharing
+  const handleShareClick = () => {
+    if (navigator.share && post) {
+      navigator.share({
+        title: post.title,
+        text: post.excerpt || post.title,
+        url: currentUrl,
+      });
+    }
+  };
 
   // Helper function to get tag name from tag object or string
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -75,7 +88,7 @@ export default function BlogDetailPage(): JSX.Element {
         
         // Set page title dynamically
         if (typeof document !== 'undefined') {
-          document.title = `${data.title} | Pixlab - Creative Agency`;
+          document.title = `${data.title} | Bahari - Frontend Developer`;
         }
       } catch (err) {
         console.error('Error fetching blog post:', err);
@@ -185,6 +198,13 @@ export default function BlogDetailPage(): JSX.Element {
       {/* Breadcrumb Structured Data */}
       <BreadcrumbStructuredData items={breadcrumbItems} />
       
+      {/* Reading Progress */}
+      <ReadingProgress 
+        content={post.content}
+        publishedDate={post.date}
+        onShareClick={handleShareClick}
+      />
+      
       <Header activeSection={''} scrollToSection={handleScrollToSection} />
       
       {/* Hero Section */}
@@ -268,9 +288,24 @@ export default function BlogDetailPage(): JSX.Element {
                   </div>
                 )}
                 
-                {/* Social Share */}
-                <SocialShareButtons url={currentUrl} title={post.title} />
+                {/* Enhanced Social Share */}
+                <FullSocialShare 
+                  url={currentUrl} 
+                  title={post.title}
+                  description={post.excerpt || `Read "${post.title}" by Bahari - Frontend Developer`}
+                  className="mt-8"
+                />
               </div>
+              
+              {/* Related Content */}
+              <RelatedContent 
+                currentContent={{
+                  id: post.id.toString(),
+                  title: post.title,
+                  type: 'blog'
+                }}
+                maxItems={3}
+              />
               
               {/* Author Bio */}
               <AuthorBio author={post.author} />

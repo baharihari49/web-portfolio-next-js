@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, Home, User, Briefcase, Image as ImageIcon, MessageSquare, Phone, FileText } from 'lucide-react';
+import { SearchComponent } from './search/SearchComponent';
 
 interface HeaderProps {
   activeSection: string;
@@ -232,6 +233,15 @@ export const Header: React.FC<HeaderProps> = ({ activeSection, scrollToSection }
           <div className="hidden md:flex items-center space-x-1">
             {navItems.map((item, index) => renderNavLink(item, index))}
 
+            {/* Search Component */}
+            <div className="ml-4">
+              <SearchComponent 
+                className="w-64"
+                placeholder="Search..."
+                maxResults={5}
+              />
+            </div>
+
             {/* CTA Button */}
             <a
               href={isHomePage ? "#contact" : "/#contact"}
@@ -282,6 +292,15 @@ export const Header: React.FC<HeaderProps> = ({ activeSection, scrollToSection }
       >
         <div className="h-full flex flex-col">
           <div className="overflow-y-auto flex-grow px-6 py-6">
+            {/* Mobile Search */}
+            <div className="mb-6">
+              <SearchComponent 
+                className="w-full"
+                placeholder="Search articles and projects..."
+                maxResults={3}
+              />
+            </div>
+            
             <div className="flex flex-col space-y-2">
               {navItems.map((item, index) => renderMobileNavLink(item, index))}
             </div>
