@@ -10,6 +10,7 @@ import {
   Star, Zap, CheckCircle2, Globe, Link2
 } from 'lucide-react';
 import { Footer } from '@/components/Footer';
+import { Breadcrumbs, BreadcrumbStructuredData } from '@/components/ui/breadcrumbs';
 
 // Import types
 import { PortfolioItem } from '@/app/types/portfolio';
@@ -120,8 +121,17 @@ export default function ProjectDetail({ params }: { params: Promise<{ slug: stri
     );
   }
 
+  // Breadcrumb items
+  const breadcrumbItems = [
+    { label: 'Portfolio', href: '/#portfolio' },
+    { label: project.title, current: true },
+  ];
+
   return (
     <>
+      {/* Breadcrumb Structured Data */}
+      <BreadcrumbStructuredData items={breadcrumbItems} />
+      
       <div className="bg-gray-50 min-h-screen pb-20 font-sans">
         {/* Hero Section with Floating Navigation */}
         <div className="relative">
@@ -249,6 +259,10 @@ export default function ProjectDetail({ params }: { params: Promise<{ slug: stri
 
         {/* Main Content Area */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
+          {/* Breadcrumbs */}
+          <div className="mb-8">
+            <Breadcrumbs items={breadcrumbItems} />
+          </div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             {/* Left Content - Main Project Info */}
             <div className="lg:col-span-2">

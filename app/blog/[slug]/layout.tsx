@@ -9,23 +9,23 @@ export async function generateMetadata(
   const { slug } = await params;
   const post = await fetchBlogPostBySlug(slug);
   if (!post) {
-    return { title: 'Post Not Found | Pixlab' };
+    return { title: 'Post Not Found | Bahari - Frontend Developer' };
   }
 
-  const url = `https://yourdomain.com/blog/${slug}`;
+  const url = `https://baharihari.com/blog/${slug}`;
   return {
-    title: `${post.title} | Pixlab – Creative Agency`,
+    title: `${post.title} | Bahari - Frontend Developer`,
     description: post.excerpt || post.content.slice(0, 150),
     alternates: { canonical: url },
     openGraph: {
       title: post.title,
       description: post.excerpt,
       url,
-      siteName: 'Pixlab',
+      siteName: 'Bahari - Frontend Developer',
       images: [{ url: post.thumbnail, width: 1200, height: 630 }],
       type: 'article',
       publishedTime: post.date,
-      authors: [post.author?.name || 'Pixlab'],
+      authors: [post.author?.name || 'Bahari'],
     },
     twitter: {
       card: 'summary_large_image',
@@ -64,7 +64,7 @@ export default async function BlogLayout({
             description: post.excerpt || post.content.slice(0, 150),
             mainEntityOfPage: {
               '@type': 'WebPage',
-              '@id': `https://yourdomain.com/blog/${slug}`,
+              '@id': `https://baharihari.com/blog/${slug}`,
             },
           }),
         }}

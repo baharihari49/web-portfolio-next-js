@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { Breadcrumbs, BreadcrumbStructuredData } from '@/components/ui/breadcrumbs';
 import RelatedPostsSection from '@/components/blog/RelatedPostsSection';
 import AuthorBio from '@/components/blog/AuthorBio';
 import CommentsSection from '@/components/blog/CommentsSection';
@@ -173,8 +174,17 @@ export default function BlogDetailPage(): JSX.Element {
     );
   }
 
+  // Breadcrumb items
+  const breadcrumbItems = [
+    { label: 'Blog', href: '/blog' },
+    { label: post.title, current: true },
+  ];
+
   return (
     <>
+      {/* Breadcrumb Structured Data */}
+      <BreadcrumbStructuredData items={breadcrumbItems} />
+      
       <Header activeSection={''} scrollToSection={handleScrollToSection} />
       
       {/* Hero Section */}
@@ -228,6 +238,10 @@ export default function BlogDetailPage(): JSX.Element {
       {/* Content Section */}
       <section className="py-16 bg-gray-50">
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Breadcrumbs */}
+          <div className="mb-8">
+            <Breadcrumbs items={breadcrumbItems} />
+          </div>
           <div className="flex flex-wrap -mx-4">
             {/* Main Content */}
             <div className="w-full lg:w-2/3 px-4">
