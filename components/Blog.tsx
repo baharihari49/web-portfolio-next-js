@@ -1,8 +1,8 @@
 // BlogSection.tsx
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 // Define TypeScript interfaces based on your API response
 interface Author {
@@ -70,7 +70,7 @@ const BlogSection: React.FC<BlogSectionProps> = ({
         }
       } catch (err) {
         setError('An error occurred while fetching blog posts');
-        console.error(err);
+        console.error('❌ API Error:', err);
       } finally {
         setIsLoading(false);
       }
@@ -173,13 +173,9 @@ const BlogSection: React.FC<BlogSectionProps> = ({
                 {post.hasImage && (
                   <Image
                     src={post.thumbnail}
-                    alt={`${post.title} - ${post.category} article by ${post.author.name}`}
+                    alt={post.title}
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    placeholder="blur"
-                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkbHR/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAhEQACAQIEBwAAAAAAAAAAAAABAgMABAUGITESSUpRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyLhI5AjpTjHeP/2Q=="
-                    loading="lazy"
                   />
                 )}
                 <div className="absolute top-4 left-4">

@@ -236,7 +236,7 @@ export const SearchComponent: React.FC<SearchComponentProps> = ({
           onChange={(e) => handleSearch(e.target.value)}
           onFocus={() => setIsOpen(true)}
           placeholder={placeholder}
-          className="w-full pl-10 pr-10 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+          className="w-full pl-10 pr-10 py-1 border border-gray-200 rounded-full focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
         />
         {query && (
           <button

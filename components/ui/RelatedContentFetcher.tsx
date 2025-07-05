@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Clock, Calendar, Folder, Tag } from 'lucide-react';
+import { ArrowRight, Clock, Calendar, Folder, Tag, Loader2 } from 'lucide-react';
 
 interface RelatedItem {
   id: string;
@@ -13,26 +13,112 @@ interface RelatedItem {
   date?: string;
   readingTime?: number;
   type: 'blog' | 'project';
+  tags?: string[];
+}
+
+interface CurrentContent {
+  id: string;
+  title: string;
+  type: 'blog' | 'project';
+  category?: string;
+  tags?: string[];
 }
 
 interface RelatedContentProps {
-  items?: RelatedItem[];
-  title?: string;
+  currentContent: CurrentContent;
   maxItems?: number;
   className?: string;
+  title?: string;
 }
 
 export const RelatedContent: React.FC<RelatedContentProps> = ({
-  items = [], // Add default empty array
-  title = "You Might Also Like",
+  currentContent,
   maxItems = 3,
   className = "",
+  title = "You Might Also Like",
 }) => {
-  // Ensure items is an array before calling slice
-  const safeItems = Array.isArray(items) ? items : [];
-  const displayItems = safeItems.slice(0, maxItems);
+  const [relatedItems, setRelatedItems] = useState<RelatedItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  if (displayItems.length === 0) return null;
+  useEffect(() => {
+    const fetchRelatedContent = async () => {
+      try {
+        setIsLoading(true);
+        
+        // Mock related content for now
+        // In a real app, this would call an API with similarity logic
+        const mockRelatedItems: RelatedItem[] = [
+          {
+            id: '1',
+            title: 'Building Modern Web Applications with Next.js',
+            slug: 'building-modern-web-apps-nextjs',
+            excerpt: 'Learn how to create performant and SEO-friendly web applications using Next.js 15 and React.',
+            thumbnail: 'https://res.cloudinary.com/du0tz73ma/image/upload/v1733248656/IMG-20241110-WA0013_jwgzp5.jpg',
+            category: 'Web Development',
+            date: 'Dec 15, 2024',
+            readingTime: 8,
+            type: 'blog',
+            tags: ['nextjs', 'react', 'web-development']
+          },
+          {
+            id: '2',
+            title: 'E-commerce Platform with Laravel',
+            slug: 'ecommerce-platform-laravel',
+            excerpt: 'A full-featured e-commerce platform built with Laravel and modern PHP practices.',
+            thumbnail: 'https://res.cloudinary.com/du0tz73ma/image/upload/v1733248656/IMG-20241110-WA0013_jwgzp5.jpg',
+            category: 'E-commerce',
+            date: 'Nov 28, 2024',
+            type: 'project',
+            tags: ['laravel', 'php', 'ecommerce']
+          },
+          {
+            id: '3',
+            title: 'React Performance Optimization Tips',
+            slug: 'react-performance-optimization',
+            excerpt: 'Essential techniques to optimize React applications for better performance and user experience.',
+            thumbnail: 'https://res.cloudinary.com/du0tz73ma/image/upload/v1733248656/IMG-20241110-WA0013_jwgzp5.jpg',
+            category: 'React',
+            date: 'Dec 10, 2024',
+            readingTime: 6,
+            type: 'blog',
+            tags: ['react', 'performance', 'optimization']
+          }
+        ];
+
+        // Filter out current content and get related items
+        const filteredItems = mockRelatedItems
+          .filter(item => item.id !== currentContent.id)
+          .slice(0, maxItems);
+
+        setRelatedItems(filteredItems);
+        setError(null);
+      } catch (err) {
+        console.error('Error fetching related content:', err);
+        setError('Failed to load related content');
+        setRelatedItems([]);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchRelatedContent();
+  }, [currentContent.id, maxItems]);
+
+  if (isLoading) {
+    return (
+      <section className={`bg-white rounded-xl shadow-sm p-6 md:p-8 ${className}`}>
+        <div className="flex items-center justify-center py-8">
+          <Loader2 className="w-6 h-6 animate-spin text-blue-600" />
+          <span className="ml-2 text-gray-600">Loading related content...</span>
+        </div>
+      </section>
+    );
+  }
+
+  if (error || relatedItems.length === 0) {
+    return null;
+  }
 
   return (
     <section className={`bg-white rounded-xl shadow-sm p-6 md:p-8 ${className}`}>
@@ -42,10 +128,10 @@ export const RelatedContent: React.FC<RelatedContentProps> = ({
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {displayItems.map((item) => (
+        {relatedItems.map((item) => (
           <article
             key={item.id}
-            className="group border border-gray-100 rounded-lg overflow-hidden hover:shadow-md transition-all duration-300"
+            className="group border border-gray-100 rounded-lg overflow-hidden hover:shadow-md transition-all duration-300 relative"
           >
             {item.thumbnail && (
               <div className="relative aspect-video overflow-hidden">
@@ -123,13 +209,13 @@ export const RelatedContent: React.FC<RelatedContentProps> = ({
         ))}
       </div>
 
-      {safeItems.length > maxItems && (
+      {relatedItems.length >= maxItems && (
         <div className="text-center mt-6">
           <Link
-            href={safeItems[0]?.type === 'blog' ? '/blog' : '/#portfolio'}
+            href={currentContent.type === 'blog' ? '/blog' : '/#portfolio'}
             className="inline-flex items-center px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-700 border border-blue-200 rounded-lg hover:bg-blue-50 transition-colors"
           >
-            View All {safeItems[0]?.type === 'blog' ? 'Articles' : 'Projects'}
+            View All {currentContent.type === 'blog' ? 'Articles' : 'Projects'}
             <ArrowRight className="w-4 h-4 ml-2" />
           </Link>
         </div>

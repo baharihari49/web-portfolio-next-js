@@ -108,14 +108,14 @@ export const SocialShareButtons: React.FC<SocialShareButtonsProps> = ({
   };
 
   return (
-    <div className={`flex flex-wrap items-center gap-3 ${className}`}>
+    <div className={`${className}`}>
       {/* Native Share Button (mobile) */}
       {navigator.share && (
         <button
           onClick={handleNativeShare}
           className={`${sizeClasses[size]} ${
             showLabels ? 'px-4 py-2 rounded-lg' : 'rounded-full'
-          } bg-blue-600 text-white hover:bg-blue-700 transition-colors flex items-center gap-2 sm:hidden`}
+          } bg-blue-600 text-white hover:bg-blue-700 transition-colors flex items-center gap-2 sm:hidden mb-3`}
           title="Share"
         >
           <Share2 className={iconSizes[size]} />
@@ -124,31 +124,31 @@ export const SocialShareButtons: React.FC<SocialShareButtonsProps> = ({
       )}
 
       {/* Individual Share Buttons */}
-      <div className="flex items-center gap-2">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2">
         {shareButtons.map((button) => (
           <button
             key={button.name}
             onClick={() => openShareWindow(button.url)}
-            className={`${sizeClasses[size]} ${
-              showLabels ? 'px-4 py-2 rounded-lg' : 'rounded-full'
-            } ${button.bgColor} ${button.color} transition-all duration-200 flex items-center gap-2 hover:scale-105`}
+            className={`${
+              showLabels ? 'px-3 py-2 rounded-lg w-full min-h-[44px]' : `${sizeClasses[size]} rounded-full`
+            } ${button.bgColor} ${button.color} transition-all duration-200 flex items-center justify-center gap-1 hover:scale-105 hover:shadow-md`}
             title={`Share on ${button.name}`}
           >
             <button.icon className={iconSizes[size]} />
-            {showLabels && <span className="text-sm font-medium">{button.name}</span>}
+            {showLabels && <span className="text-sm font-medium whitespace-nowrap">{button.name}</span>}
           </button>
         ))}
 
         {/* Copy Link Button */}
         <button
           onClick={handleCopyLink}
-          className={`${sizeClasses[size]} ${
-            showLabels ? 'px-4 py-2 rounded-lg' : 'rounded-full'
+          className={`${
+            showLabels ? 'px-3 py-2 rounded-lg w-full min-h-[44px]' : `${sizeClasses[size]} rounded-full`
           } ${
             copied 
               ? 'bg-green-100 text-green-600' 
               : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-          } transition-all duration-200 flex items-center gap-2 hover:scale-105`}
+          } transition-all duration-200 flex items-center justify-center gap-1 hover:scale-105 hover:shadow-md`}
           title={copied ? 'Link copied!' : 'Copy link'}
         >
           {copied ? (
@@ -157,7 +157,7 @@ export const SocialShareButtons: React.FC<SocialShareButtonsProps> = ({
             <Copy className={iconSizes[size]} />
           )}
           {showLabels && (
-            <span className="text-sm font-medium">
+            <span className="text-sm font-medium whitespace-nowrap">
               {copied ? 'Copied!' : 'Copy'}
             </span>
           )}
@@ -182,7 +182,7 @@ export const CompactSocialShare: React.FC<SocialShareButtonsProps> = (props) => 
 // Full version with labels for dedicated sections
 export const FullSocialShare: React.FC<SocialShareButtonsProps> = (props) => {
   return (
-    <div className={`bg-gray-50 rounded-lg p-6 ${props.className}`}>
+    <div className={`bg-gray-50 border border-gray-200 rounded-xl p-6 ${props.className}`}>
       <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
         <Share2 className="w-5 h-5 text-blue-600" />
         Share This Article
@@ -191,7 +191,7 @@ export const FullSocialShare: React.FC<SocialShareButtonsProps> = (props) => {
         {...props}
         size="md"
         showLabels={true}
-        className="flex-wrap"
+        className="gap-3"
       />
     </div>
   );

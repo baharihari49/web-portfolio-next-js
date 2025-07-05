@@ -49,6 +49,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
   };
 
   const handleError = () => {
+    console.log('❌ Image failed to load:', src);
     setIsLoading(false);
     setHasError(true);
     onError?.();
@@ -59,7 +60,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
     return (
       <div 
         className={`flex items-center justify-center bg-gray-100 text-gray-400 ${className}`}
-        style={style}
+        style={fill ? undefined : style}
       >
         <div className="flex flex-col items-center gap-2">
           <ImageIcon className="w-8 h-8" />
@@ -70,7 +71,10 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
   }
 
   return (
-    <div className={`relative overflow-hidden ${className}`} style={style}>
+    <div 
+      className={`relative overflow-hidden ${className}`} 
+      style={fill ? undefined : style}
+    >
       {/* Loading placeholder */}
       {isLoading && (
         <div className="absolute inset-0 bg-gray-100 animate-pulse flex items-center justify-center">
@@ -95,7 +99,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
         } ${fill ? 'object-cover' : ''}`}
         onLoad={handleLoad}
         onError={handleError}
-        style={{
+        style={fill ? undefined : {
           maxWidth: '100%',
           height: 'auto',
         }}

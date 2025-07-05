@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { onCLS, onINP, onFCP, onLCP, onTTFB } from 'web-vitals';
+import { trackPortfolioEvents } from '@/components/analytics/GoogleAnalytics';
 
 interface WebVitalsMetric {
   id: string;
@@ -22,14 +23,8 @@ export const WebVitals: React.FC = () => {
         console.log('[Web Vitals]', metric);
       }
 
-      // Send to Google Analytics if available
-      if (typeof window !== 'undefined' && (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag) {
-        (window as unknown as { gtag: (...args: unknown[]) => void }).gtag('event', metric.name, {
-          custom_parameter_1: metric.value,
-          custom_parameter_2: metric.rating,
-          custom_parameter_3: metric.id,
-        });
-      }
+      // Send to Google Analytics using our tracking function
+      trackPortfolioEvents.performanceMetric(metric.name, metric.value, metric.rating);
 
       // Send to other analytics services here
       // Example: Vercel Analytics, Mixpanel, etc.

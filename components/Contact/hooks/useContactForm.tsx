@@ -1,6 +1,7 @@
 import { useState, RefObject } from 'react';
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG } from '@/app/config/emailJs';
+import { trackPortfolioEvents } from '@/components/analytics/GoogleAnalytics';
 
 // Define types for our form state and handlers
 interface FormState {
@@ -94,6 +95,9 @@ export const useContactForm = (formRef: RefObject<HTMLDivElement | null>) => {
 
       console.log('Email sent successfully:', response);
       
+      // Track successful form submission
+      trackPortfolioEvents.contactFormSubmit();
+      
       // Scroll to top of form for confirmation message
       if (formRef.current) {
         formRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -107,6 +111,10 @@ export const useContactForm = (formRef: RefObject<HTMLDivElement | null>) => {
       }, 5000);
     } catch (error) {
       console.error('Failed to send email:', error);
+      
+      // Track form submission error
+      trackPortfolioEvents.contactFormError(error instanceof Error ? error.message : 'Unknown error');
+      
       setFormStatus('error');
       // Return to idle state after 5 seconds
       setTimeout(() => {

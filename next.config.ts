@@ -4,21 +4,26 @@ const nextConfig: NextConfig = {
   images: {
     domains: [
       'res.cloudinary.com',
-      'ui-avatars.com' // tambahkan domain ini
+      'ui-avatars.com',
+      'images.unsplash.com'
     ],
-    // Jika kamu ingin lebih aman dengan remotePatterns (Next.js 14+):
-    // remotePatterns: [
-    //   {
-    //     protocol: 'https',
-    //     hostname: 'res.cloudinary.com',
-    //     pathname: '/du0tz73ma/image/upload/**',
-    //   },
-    //   {
-    //     protocol: 'https',
-    //     hostname: 'ui-avatars.com',
-    //     pathname: '/api/**',
-    //   },
-    // ],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        pathname: '/du0tz73ma/image/upload/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'ui-avatars.com',
+        pathname: '/api/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        pathname: '/**',
+      },
+    ],
   }
 };
 

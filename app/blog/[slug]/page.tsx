@@ -9,7 +9,6 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Breadcrumbs, BreadcrumbStructuredData } from '@/components/ui/breadcrumbs';
 import { ReadingProgress } from '@/components/ui/ReadingProgress';
-import { RelatedContent } from '@/components/ui/RelatedContent';
 import { FullSocialShare } from '@/components/ui/SocialShareButtons';
 import RelatedPostsSection from '@/components/blog/RelatedPostsSection';
 import AuthorBio from '@/components/blog/AuthorBio';
@@ -297,15 +296,6 @@ export default function BlogDetailPage(): JSX.Element {
                 />
               </div>
               
-              {/* Related Content */}
-              <RelatedContent 
-                currentContent={{
-                  id: post.id.toString(),
-                  title: post.title,
-                  type: 'blog'
-                }}
-                maxItems={3}
-              />
               
               {/* Author Bio */}
               <AuthorBio author={post.author} />
