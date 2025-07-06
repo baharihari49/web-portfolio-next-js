@@ -17,7 +17,6 @@ export const metadata: Metadata = {
     'Tutorials',
   ],
   authors: [{ name: 'Bahari' }],
-  viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
   alternates: {
     canonical: 'https://baharihari.com/blog',
   },

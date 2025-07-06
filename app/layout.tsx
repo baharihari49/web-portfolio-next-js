@@ -45,7 +45,6 @@ export const metadata: Metadata = {
   authors: [{ name: "Bahari" }],
   creator: "Bahari",
   publisher: "Bahari",
-  viewport: "width=device-width, initial-scale=1, shrink-to-fit=no",
   alternates: {
     canonical: "https://baharihari.com",
     languages: {
@@ -97,12 +96,12 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "google-site-verification-placeholder",
-    yandex: "yandex-verification-placeholder",
-    yahoo: "yahoo-site-verification-placeholder",
-    other: {
-      'msvalidate.01': 'bing-verification-placeholder',
-    },
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+    yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION || undefined,
+    yahoo: process.env.NEXT_PUBLIC_YAHOO_VERIFICATION || undefined,
+    other: process.env.NEXT_PUBLIC_BING_VERIFICATION ? {
+      'msvalidate.01': process.env.NEXT_PUBLIC_BING_VERIFICATION,
+    } : undefined,
   },
 };
 

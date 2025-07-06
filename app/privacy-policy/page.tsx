@@ -11,7 +11,6 @@ const PrivacyPolicy: React.FC = () => {
             <Head>
                 <title>Privacy Policy - baharihari.com</title>
                 <meta name="description" content="Privacy Policy for baharihari.com - Learn what data is collected and how it's used." />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="canonical" href="https://baharihari.com/privacy-policy" />
                 <meta property="og:title" content="Privacy Policy - baharihari.com" />
                 <meta property="og:description" content="Privacy Policy for baharihari.com - Learn what data is collected and how it's used." />

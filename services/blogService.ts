@@ -54,7 +54,7 @@ export const fetchBlogPostBySlug = async (slug: string): Promise<BlogPost | null
       }
       return response.data as BlogPost;
     } catch (apiError) {
-      console.warn(`API fetch failed for slug ${slug}, trying fallback:`, apiError);
+      // API fetch failed, trying fallback method
       
       // Fallback: Fetch all posts and find by slug (useful for local development)
       const allPostsResponse = await apiRequest<ApiResponse>('/api/blog/posts');

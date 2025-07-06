@@ -69,9 +69,9 @@ const BlogSection: React.FC<BlogSectionProps> = ({
         } else {
           setError('Failed to fetch blog posts');
         }
-      } catch (err) {
+      } catch {
         setError('An error occurred while fetching blog posts');
-        console.error('❌ API Error:', err);
+        // API Error occurred - error state will be shown to user
       } finally {
         setIsLoading(false);
       }

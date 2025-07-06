@@ -42,8 +42,8 @@ export const SocialShareButtons: React.FC<SocialShareButtonsProps> = ({
       await navigator.clipboard.writeText(url);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-    } catch (error) {
-      console.error('Failed to copy link:', error);
+    } catch {
+      // Failed to copy link, ignore silently as it's not critical
     }
   };
 
@@ -55,8 +55,8 @@ export const SocialShareButtons: React.FC<SocialShareButtonsProps> = ({
           text: description || title,
           url,
         });
-      } catch (error) {
-        console.error('Error sharing:', error);
+      } catch {
+        // Native share cancelled or failed, ignore silently
       }
     }
   };

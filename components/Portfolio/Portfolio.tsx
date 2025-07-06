@@ -101,7 +101,7 @@ const Portfolio: React.FC = () => {
         }
       } catch (err) {
         setError(err instanceof Error ? err.message : 'An unknown error occurred');
-        console.error('Failed to fetch portfolio items:', err);
+        // Failed to fetch portfolio items - error state will be shown to user
       } finally {
         setLoading(false);
       }

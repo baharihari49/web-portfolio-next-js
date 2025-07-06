@@ -86,14 +86,14 @@ export const useContactForm = (formRef: RefObject<HTMLDivElement | null>) => {
       };
 
       // Mengirim email menggunakan EmailJS
-      const response = await emailjs.send(
+      await emailjs.send(
         EMAILJS_CONFIG.SERVICE_ID,
         EMAILJS_CONFIG.TEMPLATE_ID,
         templateParams,
         EMAILJS_CONFIG.PUBLIC_KEY
       );
 
-      console.log('Email sent successfully:', response);
+      // Email sent successfully
       
       // Track successful form submission
       trackPortfolioEvents.contactFormSubmit();

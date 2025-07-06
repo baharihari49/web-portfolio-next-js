@@ -11,7 +11,6 @@ const TermsOfService: React.FC = () => {
       <Head>
         <title>Terms of Service - baharihari.com</title>
         <meta name="description" content="Terms of Service for baharihari.com - Rules and guidelines for using the site." />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href="https://baharihari.com/terms-of-service" />
         <meta property="og:title" content="Terms of Service - baharihari.com" />
         <meta property="og:description" content="Terms of Service for baharihari.com - Rules and guidelines for using the site." />
