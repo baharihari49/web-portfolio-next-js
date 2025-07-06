@@ -4,6 +4,7 @@ import { ChevronDown } from 'lucide-react';
 import { Header } from '../components/Header';
 import { Hero } from '../components/Hero';
 import { useEmailJsInit } from '../lib/emailJs';
+import { FloatingWhatsApp } from '../components/FloatingWhatsApp';
 
 interface PortfolioClientProps {
   children: React.ReactNode;
@@ -31,7 +32,7 @@ const BackToTop: React.FC<{ scrollToSection: (sectionId: string) => void }> = ({
         e.preventDefault();
         scrollToSection('#home');
       }}
-      className="fixed bottom-6 right-6 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-blue-700 transition-colors z-40"
+      className="fixed bottom-24 right-6 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-blue-700 transition-colors z-40"
     >
       <ChevronDown className="transform rotate-180" size={24} />
     </a>
@@ -76,6 +77,11 @@ export const PortfolioClient: React.FC<PortfolioClientProps> = ({ children }) =>
       <Hero scrollToSection={scrollToSection} />
       {children}
       <BackToTop scrollToSection={scrollToSection} />
+      <FloatingWhatsApp 
+        phoneNumber="+62812345678901" // Ganti dengan nomor WhatsApp Anda
+        message="Hi Bahari! I'm interested in discussing a web development project with you. Are you available for a chat?"
+        showAfter={3000}
+      />
     </>
   );
 };
