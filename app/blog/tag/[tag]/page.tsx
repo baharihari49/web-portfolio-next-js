@@ -97,7 +97,7 @@ export default function BlogTagPage() {
               <span className="text-white text-lg font-medium">#{tagDisplay}</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Posts Tagged with "{tagDisplay}"
+              Posts Tagged with &quot;{tagDisplay}&quot;
             </h1>
             <p className="text-purple-100 text-lg mb-6">
               {posts.length} post{posts.length !== 1 ? 's' : ''} found with this tag
@@ -113,7 +113,7 @@ export default function BlogTagPage() {
           {posts.length === 0 ? (
             <div className="text-center py-12">
               <h3 className="text-xl font-semibold text-gray-600 mb-2">No Posts Found</h3>
-              <p className="text-gray-500 mb-6">No articles found with the tag "{tagDisplay}".</p>
+              <p className="text-gray-500 mb-6">No articles found with the tag &quot;{tagDisplay}&quot;.</p>
               <Link href="/blog">
                 <span className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors cursor-pointer">
                   Browse All Posts
@@ -161,7 +161,7 @@ export default function BlogTagPage() {
                     {/* Tags */}
                     {post.tags && post.tags.length > 0 && (
                       <div className="flex flex-wrap gap-2 mb-4">
-                        {post.tags.slice(0, 3).map((postTag: any, index: number) => {
+                        {post.tags.slice(0, 3).map((postTag: string | { name: string }, index: number) => {
                           const tagName = typeof postTag === 'string' ? postTag : postTag.name;
                           const isCurrentTag = tagName.toLowerCase().replace(/\s+/g, '-') === tag;
                           return (

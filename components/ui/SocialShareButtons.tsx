@@ -110,7 +110,7 @@ export const SocialShareButtons: React.FC<SocialShareButtonsProps> = ({
   return (
     <div className={`${className}`}>
       {/* Native Share Button (mobile) */}
-      {navigator.share && (
+      {typeof navigator !== 'undefined' && 'share' in navigator && (
         <button
           onClick={handleNativeShare}
           className={`${sizeClasses[size]} ${

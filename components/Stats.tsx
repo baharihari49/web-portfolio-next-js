@@ -214,7 +214,7 @@ export const Stats = () => {
 
         return () => clearInterval(timer);
       }
-    }, [counting, targetNumber, duration]);
+    }, [targetNumber, duration]);
 
     // Get the non-numeric suffix (like "+", "%", etc.)
     const getSuffix = () => {

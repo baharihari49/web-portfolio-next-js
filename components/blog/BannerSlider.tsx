@@ -1,6 +1,6 @@
 // components/blog/BannerSlider.tsx (updated for API integration)
 'use client'
-import { useState, useEffect, useRef, JSX } from 'react';
+import { useState, useEffect, useRef, useCallback, JSX } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -75,7 +75,7 @@ export default function BannerSlider(): JSX.Element {
   }, []);
 
   // Auto-rotation function for slider
-  const startSlideTimer = (): void => {
+  const startSlideTimer = useCallback((): void => {
     if (featuredPosts.length > 1) {
       slideInterval.current = setInterval(() => {
         setCurrentSlide(prevSlide =>
@@ -83,7 +83,7 @@ export default function BannerSlider(): JSX.Element {
         );
       }, 5000); // Change slide every 5 seconds
     }
-  };
+  }, [featuredPosts.length]);
 
   useEffect(() => {
     if (featuredPosts.length > 0) {
@@ -96,7 +96,7 @@ export default function BannerSlider(): JSX.Element {
         clearInterval(slideInterval.current);
       }
     };
-  }, [featuredPosts]);
+  }, [featuredPosts, startSlideTimer]);
 
   // Reset timer when slide changes manually
   const goToSlide = (slideIndex: number): void => {

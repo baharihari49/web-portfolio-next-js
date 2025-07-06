@@ -1,14 +1,14 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, Suspense } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 
 interface GoogleAnalyticsProps {
   measurementId: string;
 }
 
-// Google Analytics tracking component
-export const GoogleAnalytics: React.FC<GoogleAnalyticsProps> = ({ measurementId }) => {
+// Google Analytics tracking component (internal)
+const GoogleAnalyticsInternal: React.FC<GoogleAnalyticsProps> = ({ measurementId }) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -25,6 +25,15 @@ export const GoogleAnalytics: React.FC<GoogleAnalyticsProps> = ({ measurementId 
 
   // This component doesn't render anything
   return null;
+};
+
+// Google Analytics tracking component with Suspense boundary
+export const GoogleAnalytics: React.FC<GoogleAnalyticsProps> = ({ measurementId }) => {
+  return (
+    <Suspense fallback={null}>
+      <GoogleAnalyticsInternal measurementId={measurementId} />
+    </Suspense>
+  );
 };
 
 // Event tracking functions

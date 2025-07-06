@@ -10,7 +10,7 @@ async function fetchProjectBySlug(slug: string) {
     const data = await response.json();
     const portfolioItems = data.data || [];
     
-    return portfolioItems.find((item: any) => item.slug === slug);
+    return portfolioItems.find((item: { slug: string }) => item.slug === slug);
   } catch (error) {
     console.error('Error fetching project:', error);
     return null;

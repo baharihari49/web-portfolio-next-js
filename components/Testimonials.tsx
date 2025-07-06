@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Star, Quote, MessageSquare } from 'lucide-react';
 import testimoniData from "@/app/data/testimoni.json"
@@ -45,11 +45,11 @@ export const Testimonials = () => {
   }, []);
 
   // Navigation for testimonials
-  const nextTestimonial = () => {
+  const nextTestimonial = useCallback(() => {
     setCurrentIndex((prevIndex) => 
       prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
     );
-  };
+  }, [testimonials.length]);
 
   const prevTestimonial = () => {
     setCurrentIndex((prevIndex) => 
@@ -64,7 +64,7 @@ export const Testimonials = () => {
     }, 8000);
     
     return () => clearInterval(interval);
-  }, [currentIndex, testimonials.length, nextTestimonial]);
+  }, [nextTestimonial]);
 
   // Default avatar if none provided
   const getAvatarUrl = (testimonial: Testimonial) => {

@@ -97,7 +97,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ]);
 
   // Blog post pages
-  const blogPages = blogPosts.map((post: any) => ({
+  const blogPages = blogPosts.map((post: { slug: string; updatedAt?: string; date?: string }) => ({
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(post.updatedAt || post.date || new Date()),
     changeFrequency: 'weekly' as const,
@@ -105,7 +105,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // Portfolio project pages
-  const projectPages = portfolioProjects.map((project: any) => ({
+  const projectPages = portfolioProjects.map((project: { slug: string; updatedAt?: string }) => ({
     url: `${baseUrl}/projects/${project.slug}`,
     lastModified: new Date(project.updatedAt || new Date()),
     changeFrequency: 'monthly' as const,
@@ -113,7 +113,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // Blog category pages
-  const categoryPages = blogCategories.map((category: any) => ({
+  const categoryPages = blogCategories.map((category: { name: string }) => ({
     url: `${baseUrl}/blog/category/${category.name.toLowerCase().replace(/\s+/g, '-')}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
@@ -121,7 +121,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // Blog tag pages
-  const tagPages = blogTags.slice(0, 20).map((tag: any) => ({
+  const tagPages = blogTags.slice(0, 20).map((tag: { name: string }) => ({
     url: `${baseUrl}/blog/tag/${tag.name.toLowerCase().replace(/\s+/g, '-')}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
