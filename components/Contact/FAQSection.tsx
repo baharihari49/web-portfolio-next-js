@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react';
 import { HelpCircle, ChevronUp, ChevronDown } from 'lucide-react';
 import { faqData } from './data/faqData';

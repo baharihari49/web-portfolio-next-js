@@ -1,0 +1,1 @@
+export { AboutServer as About } from './AboutServer';

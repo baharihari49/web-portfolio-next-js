@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect, useRef } from 'react';
 import { Heart } from 'lucide-react';
 import { ViewMode, TechStackItem } from '@/app/types/techStack';

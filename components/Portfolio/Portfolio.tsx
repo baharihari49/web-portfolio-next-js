@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect } from 'react';
 import PortfolioFilter from './PortfolioFilter';
 import PortfolioGrid from './PortfolioGrid';
