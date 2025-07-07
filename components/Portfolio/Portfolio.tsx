@@ -75,7 +75,7 @@ const Portfolio: React.FC = () => {
   
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(6);
+  const [itemsPerPage] = useState(9);
 
   // Fetch portfolio items from API
   useEffect(() => {
@@ -198,14 +198,32 @@ const Portfolio: React.FC = () => {
                 {/* Project grid */}
                 <PortfolioGrid items={currentItems} currentPage={currentPage} />
                 
-                {/* Pagination */}
-                {totalPages > 1 && (
-                  <Pagination 
-                    currentPage={currentPage} 
-                    totalPages={totalPages} 
-                    paginate={paginate} 
-                  />
-                )}
+                {/* See All Projects CTA */}
+                <div className="text-center mt-12">
+                  <div className="inline-flex flex-col items-center gap-4">
+                    <p className="text-gray-600">
+                      Showing <span className="font-semibold text-blue-600">{currentItems.length}</span> of{' '}
+                      <span className="font-semibold text-blue-600">{portfolioItems.length}</span> projects
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <a
+                        href="/portfolio"
+                        className="px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium rounded-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
+                      >
+                        <span>See All Projects</span>
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </a>
+                      <a
+                        href="#contact"
+                        className="px-8 py-3 border-2 border-blue-600 text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition-all duration-300"
+                      >
+                        Let's Work Together
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </>
             )}
           </>
