@@ -125,7 +125,7 @@ const RelatedPostsSection: React.FC<RelatedPostsSectionProps> = ({ posts }) => {
                     {post.category && (
                       <div className="absolute top-4 left-4 z-10">
                         <span className="px-3 py-1 bg-blue-600 text-white text-sm font-medium rounded-full">
-                          {post.category}
+                          {typeof post.category === 'string' ? post.category : post.category?.name}
                         </span>
                       </div>
                     )}

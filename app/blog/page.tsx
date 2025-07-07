@@ -191,7 +191,7 @@ export default function BlogPage() {
                                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end">
                                                     <div className="p-8 text-white">
                                                         <div className="mb-4 flex items-center space-x-6 text-sm">
-                                                            <span className="bg-blue-600 px-3 py-1 rounded-full">{post.category}</span>
+                                                            <span className="bg-blue-600 px-3 py-1 rounded-full">{typeof post.category === 'string' ? post.category : post.category?.name}</span>
                                                             <span className="flex items-center"><i className="far fa-calendar-alt mr-2"></i>{post.date}</span>
                                                             <span className="flex items-center"><i className="far fa-comments mr-2"></i>Comment ({post.comments})</span>
                                                         </div>
@@ -214,7 +214,7 @@ export default function BlogPage() {
                                         ) : (
                                             <div className={`${post.hasImage ? 'p-8' : ''}`}>
                                                 <div className="mb-4 flex flex-wrap items-center gap-4 text-sm text-gray-500">
-                                                    <span className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full">{post.category}</span>
+                                                    <span className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full">{typeof post.category === 'string' ? post.category : post.category?.name}</span>
                                                     <span className="flex items-center"><i className="far fa-calendar-alt mr-2"></i>{post.date}</span>
                                                     <span className="flex items-center"><i className="far fa-comments mr-2"></i>Comment ({post.comments})</span>
                                                 </div>

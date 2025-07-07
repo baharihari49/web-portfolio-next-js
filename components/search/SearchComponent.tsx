@@ -114,7 +114,7 @@ export const SearchComponent: React.FC<SearchComponentProps> = ({
         slug: post.slug,
         excerpt: post.excerpt,
         thumbnail: post.thumbnail,
-        category: post.category,
+        category: typeof post.category === 'string' ? post.category : post.category?.name,
         type: 'blog' as const,
         content: post.content,
         tags: post.tags?.map((tag) => typeof tag === 'string' ? tag : tag.name),

@@ -14,14 +14,21 @@ interface Author {
 interface Tag {
   id: string;
   name: string;
+  slug: string;
+}
+
+interface Category {
+  id: string;
+  name: string;
+  slug: string;
 }
 
 interface BlogPost {
   id: string;
   slug: string;
   thumbnail: string;
-  category: string;
-  categoryId: string;
+  category: Category | string; // Support both formats
+  categoryId?: string;
   date: string;
   comments: number;
   title: string;
@@ -61,7 +68,7 @@ const BlogSection: React.FC<BlogSectionProps> = ({
     const fetchPosts = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blog/posts`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blog/posts/recent?limit=3`);
         const data: ApiResponse = await response.json();
         
         if (data.success) {
@@ -181,7 +188,7 @@ const BlogSection: React.FC<BlogSectionProps> = ({
                 )}
                 <div className="absolute top-4 left-4">
                   <span className="px-3 py-1.5 text-xs font-medium text-white bg-blue-600 rounded-full">
-                    {post.category}
+                    {typeof post.category === 'string' ? post.category : post.category?.name}
                   </span>
                 </div>
               </div>

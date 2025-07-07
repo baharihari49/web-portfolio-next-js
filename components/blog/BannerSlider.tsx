@@ -4,12 +4,18 @@ import { useState, useEffect, useRef, useCallback, JSX } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
+interface Category {
+  id: string;
+  name: string;
+  slug: string;
+}
+
 interface FeaturedPost {
   id: string;
   slug: string;
   title: string;
   thumbnail: string;
-  category: string;
+  category: Category | string; // Support both formats
   excerpt: string;
   author: {
     id: string;
@@ -256,7 +262,7 @@ export default function BannerSlider(): JSX.Element {
               <div className="max-w-3xl">
                 <span className="inline-block px-4 py-1 bg-blue-600 text-white text-sm font-medium rounded-full mb-4 transform translate-y-10 transition-transform duration-700 ease-out"
                   style={{ opacity: index === currentSlide ? 1 : 0, transform: index === currentSlide ? 'translateY(0)' : 'translateY(10px)' }}>
-                  {post.category}
+                  {typeof post.category === 'string' ? post.category : post.category?.name}
                 </span>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 transform translate-y-10 transition-transform duration-700 delay-100 ease-out"
                   style={{ opacity: index === currentSlide ? 1 : 0, transform: index === currentSlide ? 'translateY(0)' : 'translateY(10px)' }}>

@@ -3,6 +3,12 @@ import React, { JSX, useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
+interface Category {
+  id: string;
+  name: string;
+  slug: string;
+}
+
 interface RecentPost {
   id: string;
   slug: string;
@@ -14,7 +20,7 @@ interface RecentPost {
   };
   date: string;
   excerpt: string;
-  category: string;
+  category: Category | string; // Support both formats
 }
 
 interface BlogPostsResponse {
@@ -147,7 +153,7 @@ export default function RecentPostWidget(): JSX.Element {
                   {post.category && (
                     <>
                       <span>•</span>
-                      <span className="text-blue-600">{post.category}</span>
+                      <span className="text-blue-600">{typeof post.category === 'string' ? post.category : post.category?.name}</span>
                     </>
                   )}
                 </div>
