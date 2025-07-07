@@ -65,8 +65,8 @@ export default function PortfolioShowcase() {
     if (searchQuery) {
       filtered = filtered.filter(item =>
         item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        item.technologies.some(tech => tech.toLowerCase().includes(searchQuery.toLowerCase()))
+        (item.description && item.description.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (item.technologies && item.technologies.some(tech => tech.toLowerCase().includes(searchQuery.toLowerCase())))
       );
     }
 
@@ -81,6 +81,11 @@ export default function PortfolioShowcase() {
     (currentPage - 1) * ITEMS_PER_PAGE,
     currentPage * ITEMS_PER_PAGE
   );
+
+  const resetFilters = () => {
+    setSelectedCategory('all');
+    setSearchQuery('');
+  };
 
   return (
     <>
@@ -143,11 +148,11 @@ export default function PortfolioShowcase() {
                     </button>
                   </div>
                 ) : filteredItems.length === 0 ? (
-                  <NoResults />
+                  <NoResults resetFilters={resetFilters} />
                 ) : (
                   <>
                     <Suspense fallback={<div className="h-96" />}>
-                      <PortfolioGrid items={currentItems} />
+                      <PortfolioGrid items={currentItems} currentPage={currentPage} />
                     </Suspense>
 
                     {totalPages > 1 && (
@@ -207,7 +212,7 @@ export default function PortfolioShowcase() {
                 </div>
                 
                 <h3 className="text-3xl md:text-5xl font-bold text-gray-800 mb-6">
-                  Let's Bring Your Vision to Life
+                  Let&apos;s Bring Your Vision to Life
                 </h3>
                 
                 <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-8">

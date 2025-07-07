@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import PortfolioFilter from './PortfolioFilter';
 import PortfolioGrid from './PortfolioGrid';
-import Pagination from './Pagination';
 import NoResults from './NoResults';
 import { FilterType, SearchQueryType } from '@/app/types/portfolio';
 
@@ -74,7 +73,7 @@ const Portfolio: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<SearchQueryType>('');
   
   // Pagination state
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage] = useState(1);
   const [itemsPerPage] = useState(9);
 
   // Fetch portfolio items from API
@@ -110,30 +109,13 @@ const Portfolio: React.FC = () => {
     fetchPortfolioItems();
   }, []);
 
-  // Reset to first page when filter or search changes
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [filter, searchQuery]);
-
   // Filter and search items
   const filteredItems = filterPortfolioItems(portfolioItems, filter, searchQuery);
   
-  // Sort items in reverse order (from bottom to top)
-  // const reversedItems = [...filteredItems].reverse();
-    
   // Pagination calculations
-  const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredItems.slice(indexOfFirstItem, indexOfLastItem);
-  
-  // Page change handler
-  const paginate = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
-    
-    // Scroll to top of portfolio section
-    document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
 
   // Reset filters
   const resetFilters = () => {
@@ -219,7 +201,7 @@ const Portfolio: React.FC = () => {
                         href="#contact"
                         className="px-8 py-3 border-2 border-blue-600 text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition-all duration-300"
                       >
-                        Let's Work Together
+                        Let&apos;s Work Together
                       </a>
                     </div>
                   </div>

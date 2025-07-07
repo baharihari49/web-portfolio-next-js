@@ -11,7 +11,7 @@ interface PortfolioStatsProps {
 export default function PortfolioStats({ items }: PortfolioStatsProps) {
   const totalProjects = items.length;
   const categories = new Set(items.map(item => item.category)).size;
-  const technologies = new Set(items.flatMap(item => item.technologies)).size;
+  const technologies = new Set(items.flatMap(item => item.technologies || [])).size;
   const completedProjects = items.filter(item => item.highlight).length;
 
   const stats = [

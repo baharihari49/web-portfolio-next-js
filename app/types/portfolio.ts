@@ -1,5 +1,6 @@
 // types/portfolio.ts
 export interface PortfolioItem {
+  id?: string;
   title: string;
   slug: string;
   category: string;
@@ -22,6 +23,8 @@ export interface PortfolioItem {
   };
   nextProject?: string;
   nextProjectSlug?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface PortfolioData {
