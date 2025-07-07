@@ -88,7 +88,7 @@ const animationStyles = `
 `;
 
 export const FloatingWhatsApp: React.FC<FloatingWhatsAppProps> = ({
-  phoneNumber = '+6281234567890', // Replace with your actual WhatsApp number
+  phoneNumber = '+6283184512580', // Replace with your actual WhatsApp number
   message = 'Hi! I&apos;m interested in discussing a project with you.',
   position = 'bottom-right',
   showAfter = 3000
