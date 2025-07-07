@@ -16,11 +16,17 @@ import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 
 // Define interface for blog post
+interface Category {
+    id: string;
+    name: string;
+    slug: string;
+}
+
 interface BlogPost {
     id: number;
     slug: string;
     thumbnail: string;
-    category: string;
+    category: Category | string; // Support both formats
     date: string;
     comments: number;
     title: string;

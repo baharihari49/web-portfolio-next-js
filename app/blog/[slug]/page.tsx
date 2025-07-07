@@ -221,7 +221,13 @@ export default function BlogDetailPage(): JSX.Element {
         <div className="relative h-full container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-end pb-16">
           <div className="max-w-3xl">
             <div className="flex items-center space-x-4 mb-4">
-              <Link href={`/blog/category/${typeof post.category === 'string' ? post.category.toLowerCase().replace(/\s+/g, '-') : post.category?.slug || post.category?.name?.toLowerCase().replace(/\s+/g, '-')}`}>
+              <Link href={`/blog/category/${(() => {
+                const category = post.category;
+                if (typeof category === 'string') {
+                  return category.toLowerCase().replace(/\s+/g, '-');
+                }
+                return category?.slug || category?.name?.toLowerCase().replace(/\s+/g, '-') || 'uncategorized';
+              })()}`}>
                 <span className="px-4 py-1 bg-blue-600 text-white text-sm font-medium rounded-full hover:bg-blue-700 transition-colors cursor-pointer">
                   {typeof post.category === 'string' ? post.category : post.category?.name}
                 </span>

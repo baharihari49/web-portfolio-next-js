@@ -1,10 +1,16 @@
 // types/blog.ts (updated with proper definitions)
+export interface Category {
+  id: string;
+  name: string;
+  slug: string;
+}
+
 export interface BlogPost {
   updatedAt: string;
   id: number;
   slug: string;
   thumbnail: string;
-  category: string;
+  category: Category | string; // Support both formats
   date: string;
   comments: number;
   title: string;
@@ -30,6 +36,7 @@ export interface Author {
 export interface Tag {
   id?: string;
   name: string;
+  slug?: string;
   count?: number;
 }
 

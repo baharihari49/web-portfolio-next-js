@@ -6,13 +6,19 @@ import Image from 'next/image';
 import { Search, X, Clock, Folder, ArrowUpRight } from 'lucide-react';
 import { calculateReadingTime } from '@/lib/contentUtils';
 
+interface Category {
+  id: string;
+  name: string;
+  slug: string;
+}
+
 interface SearchResult {
   id: string;
   title: string;
   slug: string;
   excerpt: string;
   thumbnail?: string;
-  category?: string;
+  category?: Category | string;
   type: 'blog' | 'project';
   content?: string;
   tags?: string[];
@@ -105,7 +111,7 @@ export const SearchComponent: React.FC<SearchComponentProps> = ({
         slug: string; 
         excerpt: string; 
         thumbnail: string; 
-        category: string; 
+        category: Category | string; 
         content: string; 
         tags?: Array<string | { name: string }>;
       }) => ({
@@ -168,7 +174,8 @@ export const SearchComponent: React.FC<SearchComponentProps> = ({
     }
 
     // Category match
-    if (item.category?.toLowerCase().includes(queryLower)) {
+    const categoryText = typeof item.category === 'string' ? item.category : item.category?.name;
+    if (categoryText?.toLowerCase().includes(queryLower)) {
       score += 5;
     }
 
@@ -299,7 +306,7 @@ export const SearchComponent: React.FC<SearchComponentProps> = ({
                         {result.category && (
                           <span className="flex items-center">
                             <Folder className="w-3 h-3 mr-1" />
-                            {result.category}
+                            {typeof result.category === 'string' ? result.category : result.category?.name}
                           </span>
                         )}
                         {result.type === 'blog' && result.content && (

@@ -139,7 +139,7 @@ export default function BlogCategoryPage() {
                   <div className="p-6">
                     <div className="flex items-center text-sm text-gray-500 mb-3">
                       <span className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full">
-                        {post.category}
+                        {typeof post.category === 'string' ? post.category : post.category?.name}
                       </span>
                       <span className="mx-2">•</span>
                       <span>{post.date}</span>

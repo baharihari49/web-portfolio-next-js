@@ -3,12 +3,18 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
+interface Category {
+  id: string;
+  name: string;
+  slug: string;
+}
+
 interface RelatedPost {
   id: number;
   slug: string;
   title: string;
   thumbnail: string;
-  category?: string;
+  category?: Category | string;
   date?: string;
   href?: string; // Optional custom href
 }
