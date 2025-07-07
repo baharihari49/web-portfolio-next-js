@@ -78,7 +78,7 @@ export const PortfolioClient: React.FC<PortfolioClientProps> = ({ children }) =>
       {children}
       <BackToTop scrollToSection={scrollToSection} />
       <FloatingWhatsApp 
-        phoneNumber="+62812345678901" // Ganti dengan nomor WhatsApp Anda
+        phoneNumber="+6283184512580" // Ganti dengan nomor WhatsApp Anda
         message="Hi Bahari! I'm interested in discussing a web development project with you. Are you available for a chat?"
         showAfter={3000}
       />
