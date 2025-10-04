@@ -105,72 +105,17 @@ export const Testimonials = () => {
           </div>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          {/* Profile Image - Left side */}
-          <div className={`lg:col-span-4 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}>
-            <div className="relative max-w-sm mx-auto">
-              {/* Decorative elements around the image */}
-              <div className="absolute -top-4 -left-4 w-full h-full bg-indigo-600 rounded-3xl opacity-50 transform rotate-6"></div>
-              <div className="absolute -bottom-4 -right-4 w-full h-full border-4 border-blue-300 border-opacity-30 rounded-3xl transform -rotate-2"></div>
-              
-              <div className="relative z-10 rounded-3xl shadow-2xl w-full overflow-hidden transform transition-transform duration-500 hover:scale-105">
-                <Image
-                  src="https://res.cloudinary.com/du0tz73ma/image/upload/c_fill,w_1734,h_2476/v1733605546/IMG-20240831-WA0026_zwhpex.jpg"
-                  alt="Bahari"
-                  width={1734}
-                  height={2476}
-                  className="w-full h-auto object-cover"
-                  priority
-                />
-              </div>
-              
-              {/* Testimonial counts badge */}
-              <div className="absolute -bottom-6 -right-6 bg-white text-indigo-700 px-4 py-2 rounded-full shadow-lg font-bold text-lg z-20 flex items-center">
-                <MessageSquare className="w-5 h-5 mr-2" />
-                {testimonials.length}+ Reviews
-              </div>
-            </div>
-            
-            {/* Mobile version navigation - Only visible on mobile/tablet */}
-            <div className="mt-8 flex justify-center space-x-4 lg:hidden">
-              <button
-                onClick={prevTestimonial}
-                className="w-12 h-12 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition-colors"
-              >
-                <ChevronLeft className="w-6 h-6 text-blue-600" />
-              </button>
-              
-              <div className="flex space-x-2">
-                {testimonials.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setCurrentIndex(idx)}
-                    className={`w-3 h-3 rounded-full transition-colors ${
-                      idx === currentIndex ? 'bg-blue-300' : 'bg-white bg-opacity-30'
-                    }`}
-                  />
-                ))}
-              </div>
-              
-              <button
-                onClick={nextTestimonial}
-                className="w-12 h-12 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition-colors"
-              >
-                <ChevronRight className="w-6 h-6 text-blue-600" />
-              </button>
-            </div>
-          </div>
-          
-          {/* Testimonials - Right side */}
-          <div className={`lg:col-span-8 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}>
+        <div className="max-w-4xl mx-auto">
+          {/* Testimonials - Center */}
+          <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
             <div className="relative">
-              {/* Desktop navigation arrows */}
-              <div className="absolute top-1/2 -left-8 transform -translate-y-1/2 hidden lg:block">
+              {/* Navigation arrows */}
+              <div className="absolute top-1/2 -left-4 md:-left-16 transform -translate-y-1/2">
                 <button
                   onClick={prevTestimonial}
-                  className="w-14 h-14 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition-colors"
+                  className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition-colors"
                 >
-                  <ChevronLeft className="w-6 h-6 text-blue-600" />
+                  <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-blue-600" />
                 </button>
               </div>
               
@@ -227,38 +172,14 @@ export const Testimonials = () => {
                   </div>
                 </div>
               </div>
-              
-              {/* Additional testimonial preview - Desktop only */}
-              <div className="hidden lg:block mt-6">
-                <div className="bg-indigo-800 text-white rounded-2xl p-6 shadow-xl opacity-80 hover:opacity-100 transition-opacity cursor-pointer" onClick={() => setCurrentIndex((currentIndex + 1) % testimonials.length)}>
-                  <div className="flex items-center mb-4">
-                    <div className="relative w-10 h-10 rounded-full overflow-hidden mr-3">
-                      <Image
-                        src={getAvatarUrl(testimonials[(currentIndex + 1) % testimonials.length])}
-                        alt={testimonials[(currentIndex + 1) % testimonials.length].name}
-                        fill
-                        sizes="40px"
-                        className="object-cover"
-                      />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-white">{testimonials[(currentIndex + 1) % testimonials.length].name}</h4>
-                      <p className="text-blue-200 text-sm">{testimonials[(currentIndex + 1) % testimonials.length].position}</p>
-                    </div>
-                  </div>
-                  <p className="text-blue-100 line-clamp-2">
-                    &ldquo;{testimonials[(currentIndex + 1) % testimonials.length].content}&rdquo;
-                  </p>
-                </div>
-              </div>
-              
-              {/* Desktop navigation - right arrow */}
-              <div className="absolute top-1/2 -right-8 transform -translate-y-1/2 hidden lg:block">
+
+              {/* Navigation - right arrow */}
+              <div className="absolute top-1/2 -right-4 md:-right-16 transform -translate-y-1/2">
                 <button
                   onClick={nextTestimonial}
-                  className="w-14 h-14 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition-colors"
+                  className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition-colors"
                 >
-                  <ChevronRight className="w-6 h-6 text-blue-600" />
+                  <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-blue-600" />
                 </button>
               </div>
             </div>

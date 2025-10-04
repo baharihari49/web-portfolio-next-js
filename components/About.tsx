@@ -67,7 +67,7 @@ export const About = () => {
               <Image
                 width={1000}
                 height={1000}
-                src="https://res.cloudinary.com/du0tz73ma/image/upload/c_fill,w_500,h_712/v1733249983/IMG-20240331-WA0008_xebcsy.jpg"
+                src="https://res.cloudinary.com/du0tz73ma/image/upload/v1759553394/WhatsApp_Image_2025-10-04_at_11.49.33_n6jupv.jpg"
                 alt="Bahari"
                 className="relative z-10 rounded-3xl shadow-xl max-w-full h-auto object-cover w-80 md:w-[90%] transform transition-transform duration-500 hover:scale-[1.02]"
               />
