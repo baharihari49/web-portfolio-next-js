@@ -118,7 +118,7 @@ export const Hero: React.FC<HeroProps> = ({ scrollToSection }) => {
               
               <div className="relative z-10 rounded-2xl shadow-2xl overflow-hidden md:w-96 2xl:w-[25rem] transform transition-transform duration-500 hover:scale-105">
                 <Image
-                  src="https://res.cloudinary.com/du0tz73ma/image/upload/v1759518352/Gemini_Generated_Image_ep1atoep1atoep1a_b4p75f.png"
+                  src="https://res.cloudinary.com/du0tz73ma/image/upload/c_fill,w_2475,h_3420/v1733248656/IMG-20241110-WA0013_jwgzp5.jpg"
                   alt="Bahari - Frontend Developer and Full Stack Developer, professional headshot"
                   width={400}
                   height={550}
