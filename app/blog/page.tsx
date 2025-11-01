@@ -134,9 +134,8 @@ export default function BlogPage() {
 
     return (
         <>
-            <Header activeSection={''} scrollToSection={function (): void {
-                throw new Error('Function not implemented.');
-            }} />
+            {/* Header does not need scroll functionality on this page */}
+            <Header activeSection={''} />
             
             {/* Replace the old Page Banner with our new BannerSlider */}
             <BannerSlider />
