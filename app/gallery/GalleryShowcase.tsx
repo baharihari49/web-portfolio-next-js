@@ -93,7 +93,7 @@ export default function GalleryShowcase() {
           <GalleryHero />
 
           {/* Stats Section */}
-          <section className="py-8 bg-white border-b border-gray-100">
+          <section className="py-8 bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-gray-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex flex-wrap justify-center gap-8 md:gap-16">
                 <div className="text-center">
@@ -113,7 +113,7 @@ export default function GalleryShowcase() {
           </section>
 
           {/* Gallery Section */}
-          <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-50 to-indigo-50 relative overflow-hidden">
+          <section className="py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
             {/* Background decorative elements */}
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
               <div className="absolute -top-20 right-0 w-96 h-96 bg-blue-200 rounded-full opacity-30 blur-3xl"></div>
@@ -256,7 +256,7 @@ export default function GalleryShowcase() {
           </section>
 
           {/* Call to Action Section */}
-          <section className="relative py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-white">
+          <section className="relative py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-50 to-indigo-50">
             {/* Decorative elements */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
               <div className="absolute top-0 left-1/4 w-72 h-72 bg-indigo-100 rounded-full opacity-30 blur-3xl"></div>
