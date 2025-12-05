@@ -36,7 +36,7 @@ const GalleryItem: React.FC<GalleryItemProps> = ({ item, index, isVisible, onPre
           </div>
 
           {/* Category badge */}
-          <div className="absolute top-3 left-3 px-2 py-1 bg-purple-600 rounded-md text-white text-xs font-medium flex items-center gap-1">
+          <div className="absolute top-3 left-3 px-2 py-1 bg-blue-600 rounded-md text-white text-xs font-medium flex items-center gap-1">
             <Folder className="w-3 h-3" />
             {item.category.name}
           </div>
@@ -45,7 +45,7 @@ const GalleryItem: React.FC<GalleryItemProps> = ({ item, index, isVisible, onPre
           <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
             <button
               onClick={() => onPreview(item)}
-              className="transform scale-90 group-hover:scale-100 transition-transform duration-300 w-14 h-14 rounded-full bg-white flex items-center justify-center text-purple-600 hover:bg-purple-50 shadow-lg"
+              className="transform scale-90 group-hover:scale-100 transition-transform duration-300 w-14 h-14 rounded-full bg-white flex items-center justify-center text-blue-600 hover:bg-blue-50 shadow-lg"
               aria-label="Preview template"
             >
               <Eye className="w-6 h-6" />
@@ -55,7 +55,7 @@ const GalleryItem: React.FC<GalleryItemProps> = ({ item, index, isVisible, onPre
 
         {/* Content */}
         <div className="p-4" onClick={() => onPreview(item)}>
-          <h3 className="text-base font-semibold text-gray-800 truncate group-hover:text-purple-600 transition-colors">
+          <h3 className="text-base font-semibold text-gray-800 truncate group-hover:text-blue-600 transition-colors">
             {item.title}
           </h3>
           {item.description && (

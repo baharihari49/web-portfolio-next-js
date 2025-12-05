@@ -17,6 +17,20 @@ export async function GET() {
 
     const data = await response.json();
 
+    // Strip htmlContent from response to prevent exposure
+    // HTML content is only accessible via the secure /api/preview/[id] endpoint
+    if (data.success && Array.isArray(data.data)) {
+      const sanitizedData = {
+        ...data,
+        data: data.data.map((item: Record<string, unknown>) => {
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          const { htmlContent, ...rest } = item;
+          return rest;
+        }),
+      };
+      return NextResponse.json(sanitizedData);
+    }
+
     return NextResponse.json(data);
   } catch (error) {
     console.error('Failed to fetch collections:', error);

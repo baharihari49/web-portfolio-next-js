@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useEffect, useCallback } from 'react';
-import { X, Maximize2, Minimize2, ExternalLink } from 'lucide-react';
+import React, { useEffect, useCallback, useState } from 'react';
+import { X, Maximize2, Minimize2, Loader2 } from 'lucide-react';
 import { CollectionItem } from '@/app/types/collection';
 
 interface GalleryModalProps {
@@ -11,7 +11,34 @@ interface GalleryModalProps {
 }
 
 const GalleryModal: React.FC<GalleryModalProps> = ({ item, isOpen, onClose }) => {
-  const [isFullscreen, setIsFullscreen] = React.useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [previewUrl, setPreviewUrl] = useState<string>('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Fetch preview URL from server-side API
+  useEffect(() => {
+    if (!item || !isOpen) {
+      setPreviewUrl('');
+      return;
+    }
+
+    const fetchPreviewUrl = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch(`/api/preview/token?id=${item.id}`);
+        const data = await response.json();
+        if (data.success) {
+          setPreviewUrl(data.previewUrl);
+        }
+      } catch (error) {
+        console.error('Failed to fetch preview URL:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchPreviewUrl();
+  }, [item, isOpen]);
 
   // Handle escape key
   const handleKeyDown = useCallback(
@@ -41,14 +68,6 @@ const GalleryModal: React.FC<GalleryModalProps> = ({ item, isOpen, onClose }) =>
 
   if (!isOpen || !item) return null;
 
-  const openInNewTab = () => {
-    const newWindow = window.open('', '_blank');
-    if (newWindow) {
-      newWindow.document.write(item.htmlContent);
-      newWindow.document.close();
-    }
-  };
-
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       {/* Backdrop */}
@@ -76,22 +95,15 @@ const GalleryModal: React.FC<GalleryModalProps> = ({ item, isOpen, onClose }) =>
             <h3 className="font-medium text-gray-800 truncate max-w-[300px] sm:max-w-none">
               {item.title}
             </h3>
-            <span className="hidden sm:inline-flex px-2 py-0.5 bg-purple-100 text-purple-600 text-xs font-medium rounded">
+            <span className="hidden sm:inline-flex px-2 py-0.5 bg-blue-100 text-blue-600 text-xs font-medium rounded">
               {item.category.name}
             </span>
           </div>
 
           <div className="flex items-center gap-2">
             <button
-              onClick={openInNewTab}
-              className="p-2 text-gray-500 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-colors"
-              title="Open in new tab"
-            >
-              <ExternalLink className="w-5 h-5" />
-            </button>
-            <button
               onClick={() => setIsFullscreen(!isFullscreen)}
-              className="p-2 text-gray-500 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-colors"
+              className="p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
               title={isFullscreen ? 'Exit fullscreen' : 'Fullscreen'}
             >
               {isFullscreen ? (
@@ -110,14 +122,23 @@ const GalleryModal: React.FC<GalleryModalProps> = ({ item, isOpen, onClose }) =>
           </div>
         </div>
 
-        {/* Content - iframe */}
-        <div className="flex-1 overflow-hidden bg-white">
-          <iframe
-            srcDoc={item.htmlContent}
-            className="w-full h-full border-0"
-            title={item.title}
-            sandbox="allow-scripts allow-same-origin"
-          />
+        {/* Content - iframe with secure preview URL */}
+        <div className="flex-1 overflow-hidden bg-white relative">
+          {isLoading || !previewUrl ? (
+            <div className="absolute inset-0 flex items-center justify-center bg-gray-50">
+              <div className="flex flex-col items-center gap-3">
+                <Loader2 className="w-8 h-8 text-blue-600 animate-spin" />
+                <span className="text-gray-600 text-sm">Loading preview...</span>
+              </div>
+            </div>
+          ) : (
+            <iframe
+              src={previewUrl}
+              className="w-full h-full border-0"
+              title={item.title}
+              sandbox="allow-scripts allow-same-origin"
+            />
+          )}
         </div>
       </div>
     </div>

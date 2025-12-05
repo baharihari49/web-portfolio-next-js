@@ -81,3 +81,4 @@ export const getCollectionCategories = async (): Promise<string[]> => {
     return [];
   }
 };
+

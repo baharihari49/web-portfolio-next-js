@@ -14,7 +14,6 @@ export interface CollectionItem {
   slug: string;
   description: string | null;
   thumbnail: string;
-  htmlContent: string;
   published: boolean;
   order: number | null;
   categoryId: string;

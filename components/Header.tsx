@@ -3,7 +3,7 @@ import { MouseEvent, useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Home, User, Briefcase, Image as ImageIcon, MessageSquare, Phone, FileText } from 'lucide-react';
+import { Menu, X, Home, User, Briefcase, Image as ImageIcon, MessageSquare, Phone, FileText, Layout } from 'lucide-react';
 import { SearchComponent } from './search/SearchComponent';
 
 interface HeaderProps {
@@ -86,7 +86,7 @@ export const Header: React.FC<HeaderProps> = ({ activeSection, scrollToSection }
     { name: 'About', href: '#about', icon: <User className="w-4 h-4" /> },
     { name: 'Experience', href: '#experience', icon: <Briefcase className="w-4 h-4" /> },
     { name: 'Portfolio', href: '/portfolio', icon: <ImageIcon className="w-4 h-4" /> },
-    // { name: 'Tech Stack', href: '#tech-stack', icon: <ImageIcon className="w-4 h-4" /> },
+    { name: 'Gallery', href: '/gallery', icon: <Layout className="w-4 h-4" /> },
     { name: 'Blog', href: '/blog', icon: <FileText className="w-4 h-4" /> },
     { name: 'Testimonials', href: '#testimonials', icon: <MessageSquare className="w-4 h-4" /> },
     { name: 'Contact', href: '#contact', icon: <Phone className="w-4 h-4" /> },
@@ -122,16 +122,17 @@ export const Header: React.FC<HeaderProps> = ({ activeSection, scrollToSection }
     window.location.href = href;
   };
 
-  // Render different navigation items based on current page\
+  // Render different navigation items based on current page
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const renderNavLink = (item: any, index: number) => {
-    // For the blog link which is an absolute URL
-    if (item.href === '/blog') {
+    // For page links (blog, portfolio, gallery)
+    if (item.href.startsWith('/')) {
+      const isActivePage = pathname === item.href || pathname.startsWith(item.href + '/');
       return (
         <Link
           key={index}
-          href="/blog"
-          className={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${pathname === '/blog'
+          href={item.href}
+          className={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${isActivePage
             ? 'text-blue-600'
             : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
             }`}
@@ -165,19 +166,20 @@ export const Header: React.FC<HeaderProps> = ({ activeSection, scrollToSection }
   // Render mobile navigation items
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const renderMobileNavLink = (item: any, index: number) => {
-    // For the blog link which is an absolute URL
-    if (item.href === '/blog') {
+    // For page links (blog, portfolio, gallery)
+    if (item.href.startsWith('/')) {
+      const isActivePage = pathname === item.href || pathname.startsWith(item.href + '/');
       return (
         <Link
           key={index}
-          href="/blog"
-          className={`flex items-center py-3 px-4 rounded-lg transition-colors duration-300 ${pathname === '/blog'
+          href={item.href}
+          className={`flex items-center py-3 px-4 rounded-lg transition-colors duration-300 ${isActivePage
             ? 'bg-blue-100 text-blue-600'
             : 'hover:bg-gray-100 text-gray-700'
             }`}
           onClick={() => setIsOpen(false)}
         >
-          <span className={`mr-3 ${pathname === '/blog' ? 'text-blue-600' : 'text-gray-500'}`}>
+          <span className={`mr-3 ${isActivePage ? 'text-blue-600' : 'text-gray-500'}`}>
             {item.icon}
           </span>
           <span className="font-medium">{item.name}</span>

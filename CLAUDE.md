@@ -52,6 +52,7 @@ npm run clean
   - `PortfolioClient.tsx` - Client wrapper handling navigation, scroll tracking, and EmailJS initialization
   - `blog/` - Blog section with dynamic routing (`[slug]`, category/`[category]`, tag/`[tag]`)
   - `portfolio/` - Portfolio showcase page with dedicated layout
+  - `gallery/` - Design gallery page with template collection and interactive preview
   - `projects/` - Project detail pages with dynamic `[slug]` routing
   - `privacy-policy/` & `terms-of-service/` - Legal pages
 
@@ -154,11 +155,16 @@ The app uses a centralized scroll tracking system in `PortfolioClient.tsx`:
 
 ### Gallery System Architecture
 - Gallery service (`services/collectionService.ts`) provides:
-  - Fetching all published collections with 60-second cache
+  - Fetching all published collections
   - Filtering by category
   - Single collection lookup by slug
-- Gallery modal renders HTML content in sandboxed iframe for interactive preview
-- Supports fullscreen mode and opening templates in new tabs
+  - Secure preview URL generation with signed tokens
+- **Security**: HTML content is protected and never exposed to client JavaScript
+  - API route strips `htmlContent` from responses
+  - Preview uses secure `/api/preview/[id]?token=xxx` endpoint
+  - Tokens are HMAC-SHA256 signed with 10-minute expiry
+  - iframe sandbox for isolation with security headers
+- Token utility in `/lib/previewToken.ts` for generation and validation
 
 ### SEO & Analytics
 - Comprehensive metadata in `app/layout.tsx` (Open Graph, Twitter Cards, verification tags)
@@ -169,6 +175,7 @@ The app uses a centralized scroll tracking system in `PortfolioClient.tsx`:
 ### Environment Variables
 Required environment variables:
 - `NEXT_PUBLIC_API_BASE_URL` - Base URL for blog and experience APIs
+- `PREVIEW_TOKEN_SECRET` - Secret key for signing preview tokens (required for gallery security)
 - `NEXT_PUBLIC_GA_MEASUREMENT_ID` - Google Analytics measurement ID (optional, production)
 - `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` - Google site verification (optional)
 - `NEXT_PUBLIC_YANDEX_VERIFICATION` - Yandex verification (optional)
