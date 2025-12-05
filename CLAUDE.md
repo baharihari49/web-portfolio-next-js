@@ -4,18 +4,19 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a **Next.js 15** portfolio website built with the App Router architecture. It's a personal portfolio for "Bahari" featuring a modern, responsive design with multiple sections including hero, about, experience, portfolio, tech stack, testimonials, blog, and contact forms.
+This is a **Next.js 16** portfolio website built with the App Router architecture and **React 19**. It's a personal portfolio for "Bahari" featuring a modern, responsive design with multiple sections including hero, about, experience, portfolio, tech stack, testimonials, blog, and contact forms.
 
 ## Key Technologies & Stack
 
-- **Framework**: Next.js 15 with App Router
-- **Language**: TypeScript
+- **Framework**: Next.js 16 with App Router and Turbopack
+- **Language**: TypeScript (strict mode)
+- **React**: React 19
 - **Styling**: Tailwind CSS v4 with custom animations
 - **UI Components**: ShadCN UI (based on Radix UI)
 - **Animations**: Framer Motion
 - **Icons**: Lucide React, React Icons
 - **Email Service**: EmailJS for contact forms
-- **Deployment**: PM2 ecosystem configuration included
+- **Deployment**: PM2 ecosystem configuration (port 3006)
 - **Performance Monitoring**: Web Vitals tracking in production
 - **Analytics**: Google Analytics integration
 
@@ -56,7 +57,7 @@ npm run clean
 
 ### Component Architecture
 - **Hybrid Server/Client Pattern**: Server components by default, client components marked with `'use client'`
-- **Section Components**: Hero, About, Experience, Portfolio, TechStack, Stats, Testimonials, Contact, Blog, Footer
+- **Section Components**: Hero, About, Experience, Portfolio, Gallery, TechStack, Stats, Testimonials, Contact, Blog, Footer
 - **Reusable UI**: Located in `components/ui/` following ShadCN patterns (button, skeleton, breadcrumbs, etc.)
 - **Custom Hooks**: Located in component-specific `hooks/` directories (e.g., `useContactForm`, `useExperienceAnimation`)
 - **Utility Functions**: Located in `app/utils/` for component-specific helpers (experienceUtils, techStackUtils, portfolioUtils)
@@ -64,6 +65,7 @@ npm run clean
 ### Key Components Structure
 - `components/Experience/` - Timeline-based experience display with desktop/mobile variants, fetches from external API
 - `components/Portfolio/` - Project showcase with filtering, pagination, and grid/list views
+- `components/Gallery/` - Template/design collection gallery with category filtering and interactive preview modal (iframe-based)
 - `components/TechStack/` - Technology skills with search, pagination, and detailed modal views
 - `components/Contact/` - Contact form with EmailJS integration, FAQ section, and availability tracking
 - `components/blog/` - Blog system with search, categories, tags, table of contents, and social sharing
@@ -75,7 +77,8 @@ npm run clean
 - **Static Data**: JSON files in `app/data/` for stats, tech stack, and testimonials
 - **External API**: Experience data fetched from `NEXT_PUBLIC_API_BASE_URL/api/experiences`
 - **Blog Service**: Comprehensive API service in `services/blogService.ts` for blog posts, categories, tags, search, and pagination
-- **Type Definitions**: TypeScript interfaces in `app/types/` (experience, portfolio, techStack)
+- **Collection Service**: API service in `services/collectionService.ts` for gallery/template collections
+- **Type Definitions**: TypeScript interfaces in `app/types/` (experience, portfolio, techStack, collection)
 - **Configuration**: Centralized configs in `app/config/` (emailJs.ts)
 
 ## Configuration Files
@@ -116,18 +119,7 @@ The app uses a centralized scroll tracking system in `PortfolioClient.tsx`:
 - Provides `scrollToSection` function to child components for smooth scrolling
 - BackToTop button appears after scrolling 300px down
 - Navigation updates automatically based on scroll position (offset: 300px)
-
-## Data Sources
-
-### Static Data
-- `app/data/stats.json` - Portfolio statistics (projects, experience, etc.)
-- `app/data/techstack.json` - Technology stack with proficiency levels
-- `app/data/testimoni.json` - Client testimonials
-
-### External Services
-- **EmailJS**: Contact form submissions (`app/config/emailJs.ts`)
-- **Cloudinary**: Image hosting for portfolio assets
-- **Blog API**: External API integration for blog content
+- Includes FloatingWhatsApp component for direct contact
 
 ## Important Implementation Details
 
@@ -156,8 +148,17 @@ The app uses a centralized scroll tracking system in `PortfolioClient.tsx`:
 ### External API Integration
 - Experience data fetched from `${NEXT_PUBLIC_API_BASE_URL}/api/experiences`
 - Blog data fetched from various endpoints under `/api/blog/`
+- Collection/Gallery data fetched from `${NEXT_PUBLIC_API_BASE_URL}/api/collections`
 - Components handle loading, error states, and empty data gracefully
 - TypeScript interfaces ensure type safety across API responses
+
+### Gallery System Architecture
+- Gallery service (`services/collectionService.ts`) provides:
+  - Fetching all published collections with 60-second cache
+  - Filtering by category
+  - Single collection lookup by slug
+- Gallery modal renders HTML content in sandboxed iframe for interactive preview
+- Supports fullscreen mode and opening templates in new tabs
 
 ### SEO & Analytics
 - Comprehensive metadata in `app/layout.tsx` (Open Graph, Twitter Cards, verification tags)
@@ -182,10 +183,22 @@ Required environment variables:
 - Turbopack enabled in development for faster builds
 - Component-level code splitting via dynamic imports where applicable
 
+## Data Sources
+
+### Static Data
+- `app/data/stats.json` - Portfolio statistics (projects, experience, etc.)
+- `app/data/techstack.json` - Technology stack with proficiency levels
+- `app/data/testimoni.json` - Client testimonials
+
+### External Services
+- **EmailJS**: Contact form submissions (`app/config/emailJs.ts`)
+- **Cloudinary**: Image hosting for portfolio assets
+- **Blog API**: External API integration for blog content
+
 ## File Organization
 
 - `/app` - Next.js App Router pages, layouts, types, utils, data, and config
 - `/components` - Reusable UI components organized by feature (with sub-folders for complex features)
 - `/lib` - Utility functions (emailJs initialization, content utils, general utils)
-- `/services` - API services and data fetching logic (blogService)
+- `/services` - API services and data fetching logic (blogService, collectionService)
 - `/public` - Static assets, verification files, and public resources

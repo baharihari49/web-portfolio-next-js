@@ -2,6 +2,7 @@ import React from 'react';
 import { About } from '../components/About';
 import Experience from '../components/Experience';
 import Portfolio from '@/components/Portfolio';
+import Gallery from '@/components/Gallery';
 import { CTA } from '../components/CTA';
 import { Stats } from '../components/Stats';
 import { Testimonials } from '../components/Testimonials';
@@ -24,6 +25,7 @@ const BahariPortfolio = () => {
         <About />
         <Experience />
         <Portfolio />
+        <Gallery />
         <TechStack />
         <CTA />
         <Stats />
